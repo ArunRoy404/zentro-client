@@ -1,0 +1,10 @@
+{
+  "navLinks": [
+    { "href": "/", "label": "Home" },
+    { "href": "/properties", "label": "Properties" },
+    { "href": "/agents", "label": "Agents" },
+    { "href": "/about", "label": "About Us" },
+    { "href": "/contact", "label": "Contact" },
+    { "href": "/dashboard", "label": "Dashboard" }
+  ]
+}
