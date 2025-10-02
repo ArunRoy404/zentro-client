@@ -5,7 +5,7 @@ import React from 'react';
 
 const RegistrationPage = () => {
     return (
-        <section className='mx-auto max-w-[480px] h-screen flex items-center justify-center  px-4'>
+        <section className='mx-auto max-w-[480px] pt-30 flex items-center justify-center  px-4'>
             <div>
                 {/* heading  */}
                 <div className='space-y-2 text-center mb-10 md:mb-16 px-4'>
