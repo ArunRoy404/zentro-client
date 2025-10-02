@@ -12,11 +12,14 @@ const SigninPage = () => {
                     <h1 className='text-[rgba(33,43,54,1)] font-bold text-2xl' >
                         Sign In to your Account
                     </h1>
+                    <p className='text-[rgba(99,115,129,1)] text-base font-normal'>
+                        Please share your login details so you can access the website.
+                    </p>
                 </div>
 
 
                 {/* form  */}
-                <SigninForm/>
+                <SigninForm />
 
                 {/* divider  */}
                 <div className="flex items-center mx-auto max-w-[480px] my-3 px-4">
@@ -39,7 +42,7 @@ const SigninPage = () => {
                         href={'/registration'}
                         className='text-primary font-semibold text-sm'
                     >
-                        register
+                        Get Started
                     </Link>
                 </div>
             </div>

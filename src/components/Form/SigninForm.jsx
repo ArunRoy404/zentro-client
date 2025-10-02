@@ -11,6 +11,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import Message from "../ui/Message";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 
 
@@ -91,14 +92,23 @@ const SigninForm = () => {
                     {/* input fields */}
                     <InputCustom form={form} label={'Email'} id={'email'} />
                     <InputCustom form={form} label={'Password'} id={'password'} />
-             
-                    <InputCustom form={form} id={'agree'} checkBox={true} >
-                        Remember me
-                    </InputCustom>
+
+
+                    <div className="flex items-center justify-between">
+                        <InputCustom form={form} id={'rememberMe'} checkBox={true} >
+                            Remember me
+                        </InputCustom>
+                        <Link
+                            href={'/reset-password-email'}
+                            className='text-primary font-semibold text-sm'
+                        >
+                            Forgot password?
+                        </Link>
+                    </div>
 
 
                     {/* Submit Button */}
-                    <Button disabled={isLoading} type="submit" className="mt-2 cursor-pointer w-full text-xs md:text-base font-bold leading-6  md:py-6">
+                    <Button disabled={isLoading} type="submit" className="mt-6 cursor-pointer w-full text-xs md:text-base font-bold leading-6  md:py-6">
                         {
                             isLoading
                                 ? <Spinner stroke="10" color="white" size="10" />
