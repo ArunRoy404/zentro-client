@@ -19,7 +19,7 @@ export default function Hero() {
           {/* description  */}
           <div className="flex justify-end">
             <div className="lg:max-w-100">
-              <p className="mt-6 text-lg text-neutral-600">
+              <p className="mt-6 text-sm md:text-lg text-neutral-600">
                 Explore the best properties, connect with trusted agents, and discover the perfect place to live, rent, or invest.
               </p>
 
