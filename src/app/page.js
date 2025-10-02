@@ -1,11 +1,5 @@
-import React from 'react';
+import HomePage from '@/page/HomePage';
 
-const page = () => {
-  return (
-    <div>
-      hello world
-    </div>
-  );
-};
+const page = () => <HomePage/>
 
 export default page;
