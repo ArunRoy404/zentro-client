@@ -1,12 +1,9 @@
-import Navbar from '@/components/Navbar/Navbar';
+import Hero from '@/section/Hero';
 
 const HomePage = () => {
     return (
         <>
-            <Navbar />
-            <main>
-            </main>
-            
+            <Hero />
         </>
     );
 };
