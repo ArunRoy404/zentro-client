@@ -12,9 +12,14 @@ const NavAuthentication = () => {
     // )
     return (
         <div className="hidden md:block">
-            <Link href="/signin">
+            {/* <Link href="/signin">
                 <Button>
                     Sign In
+                </Button>
+            </Link> */}
+            <Link href="/registration">
+                <Button>
+                    Register
                 </Button>
             </Link>
         </div>
