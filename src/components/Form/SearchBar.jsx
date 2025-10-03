@@ -26,13 +26,19 @@ const SearchBar = () => {
         },
     });
 
+    const onSubmit = (values) => {
+        console.log(values);
+    }
+
     return (
 
         <Form {...form} >
-            <form className="mt-3 flex flex-col md:flex-row gap-4 items-center">
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="mt-3 flex flex-col md:flex-row gap-4 items-center">
                 <InputCustom form={form} label={'Location'} id={'location'} />
 
-                <Button className="bg-neutral-900 text-white hover:bg-neutral-800 w-full md:w-auto">
+                <Button type='submit' className="w-full md:w-auto">
                     Search
                 </Button>
             </form>

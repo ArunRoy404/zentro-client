@@ -1,4 +1,4 @@
-import SearchBar from "@/components/ui/SearchBar"
+import SearchBar from "@/components/Form/SearchBar"
 import Image from "next/image"
 
 
