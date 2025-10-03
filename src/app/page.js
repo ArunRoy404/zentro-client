@@ -1,5 +1,5 @@
-import HomePage from '@/page/HomePage';
+import HomePage from "@/page/HomePage";
 
-const page = () => <HomePage/>
+const page = () => <HomePage />;
 
 export default page;

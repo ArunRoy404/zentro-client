@@ -3,7 +3,9 @@ import React from 'react';
 
 const layout = ({ children }) => {
     return (
-        <main className='w-screen h-screen relative'>
+        <main
+            style={{ overflowX: 'hidden' }}
+            className='relative'>
             <NavbarAuth />
             {children}
         </main>
