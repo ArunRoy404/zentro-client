@@ -23,7 +23,6 @@ export const authOptions = {
                 const res = await fetch("https://zentro-server.vercel.app/api/v1/users/signin", requestOptions)
                 const data = await res.json();
 
-
                 if (res.ok && data.success) {
                     return data.data
                 }
@@ -33,7 +32,25 @@ export const authOptions = {
                 return null
             }
         }
-    })]
+    })],
+    session: {
+        strategy: "jwt",
+        maxAge: 30 * 24 * 60 * 60
+    },
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
+                token.user = user
+            }
+            return token
+        },
+
+        async session({ session, token }) {
+            session.user = user
+            return session
+        }
+    },
+    secret: process.env.NEXTAUTH_SECRET
 }
 
 const handler = NextAuth(authOptions)
