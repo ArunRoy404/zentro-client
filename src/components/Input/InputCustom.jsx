@@ -29,7 +29,7 @@ const InputCustom = ({ form, label, id, checkBox, children }) => {
                                         type={showPassword ? "text" : "password"}
                                         {...field}
                                         id={id}
-                                        className="peer h-8 md:h-10 focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
+                                        className="peer rounded-none h-8 md:h-10 focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
                                     />
 
                                     <button
@@ -104,7 +104,7 @@ const InputCustom = ({ form, label, id, checkBox, children }) => {
                                 <Input
                                     {...field}
                                     id={id}
-                                    className="peer h-8 md:h-10 focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
+                                    className="rounded-none peer h-8 md:h-10 focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
                                 />
 
                                 {/* Label */}
