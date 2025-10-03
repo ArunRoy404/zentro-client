@@ -18,7 +18,7 @@ const Navbar = () => {
 
     return (
         <header className="bg-white fixed w-full z-50">
-            <nav className="container mx-auto flex items-center justify-between px-6 py-4">
+            <nav className="container mx-auto flex items-center justify-between px-6 py-4  transition-all duration-500">
                 {/* logo  */}
                 <Logo variant={'primary'} />
 
