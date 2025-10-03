@@ -46,7 +46,7 @@ const properties = [
     price: 30000000,
   },
   {
-    _id: "1",
+    _id: "4",
     title: "Luxury Villa with Ocean View",
     propertyType: "house",
     propertyArea: { value: 3500, unit: "sq ft" },
@@ -59,7 +59,7 @@ const properties = [
     price: 48000000,
   },
   {
-    _id: "2",
+    _id: "5",
     title: "Modern Apartment in City Center",
     propertyType: "apartment",
     propertyArea: { value: 1500, unit: "sq ft" },
@@ -72,7 +72,7 @@ const properties = [
     price: 15000000,
   },
   {
-    _id: "3",
+    _id: "6",
     title: "Spacious Commercial Space",
     propertyType: "commercial",
     propertyArea: { value: 5000, unit: "sq ft" },

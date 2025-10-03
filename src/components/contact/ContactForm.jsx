@@ -32,15 +32,19 @@ const ContactForm = () => {
     },
   });
 
-  const onSubmit = async (values) => {
+  const onSubmit = () => {
     setIsLoading(true);
     try {
-      toast.success("Your message successfully submitted");
-      form.reset();
+      setTimeout(() => {
+        toast.success("Your message successfully submitted");
+        form.reset();
+        setIsLoading(false);
+      }, 1000);
     } catch (error) {
-      toast.error("Something went wrong. Try again later.");
-    } finally {
-      setIsLoading(false);
+      setTimeout(() => {
+        toast.error("Something went wrong. Try again later.");
+        setIsLoading(false);
+      }, 1000);
     }
   };
 
@@ -75,9 +79,6 @@ const ContactForm = () => {
               "Send Message"
             )}
           </Button>
-
-          {/* Status Message */}
-          <Message status={status} />
         </form>
       </Form>
     </div>
