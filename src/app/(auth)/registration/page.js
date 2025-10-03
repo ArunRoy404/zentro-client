@@ -1,4 +1,4 @@
-import RegistrationPage from '@/page/RegistrationPage';
+import RegistrationPage from "@/page/RegistrationPage";
 
-const page = () => <RegistrationPage/>
+const page = () => <RegistrationPage />;
 export default page;
