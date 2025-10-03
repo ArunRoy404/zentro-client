@@ -5,8 +5,8 @@ import React from 'react';
 
 const SigninPage = () => {
     return (
-        <section className='w-[100vw] h-[100vh] flex items-center justify-center  px-4'>
-            <div className='max-w-[480px]'>
+        <section className='min-w-[100vw] min-h-[100vh] flex items-center justify-center  px-4'>
+            <div className=' max-w-[480px] mx-auto py-30 '>
                 <div className='w-full'>
                     {/* heading  */}
                     <div className='space-y-2 text-center mb-10 md:mb-16 px-4'>
