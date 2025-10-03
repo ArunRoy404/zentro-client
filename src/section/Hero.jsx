@@ -1,6 +1,6 @@
+import SearchBar from "@/components/ui/SearchBar"
 import Image from "next/image"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+
 
 export default function Hero() {
   return (
@@ -11,7 +11,7 @@ export default function Hero() {
           {/* heading  */}
           <div>
             <h1 className="text-4xl md:text-6xl font-bold text-neutral-900 leading-tight">
-              Find Your Dream Home with <span className="text-neutral-600">Zentro</span>
+              Find Your Dream Home with <span className="text-secondary">Zentro</span>
             </h1>
           </div>
 
@@ -19,28 +19,19 @@ export default function Hero() {
           {/* description  */}
           <div className="flex justify-end">
             <div className="lg:max-w-100">
-              <p className="mt-6 text-sm md:text-lg text-neutral-600">
+              <p className="mt-6 text-sm md:text-base font-semibold text-secondary">
                 Explore the best properties, connect with trusted agents, and discover the perfect place to live, rent, or invest.
               </p>
 
               {/* search bar   */}
-              <div className="mt-8 flex flex-col md:flex-row gap-4 items-center">
-                <Input
-                  type="text"
-                  placeholder="Enter location"
-                  className="flex-1"
-                />
-                <Button className="bg-neutral-900 text-white hover:bg-neutral-800 w-full md:w-auto">
-                  Search
-                </Button>
-              </div>
+              <SearchBar />
             </div>
           </div>
         </div>
 
 
         {/* Hero image   */}
-        <div className="relative w-full h-[calc(100dvh-64px-393px)] md:h-[calc(100dvh-68px-434px)] lg:h-[calc(100dvh-68px-345px)]  xl:h-[calc(100dvh-68px-296px)]">
+        <div className="relative w-full h-[calc(100dvh-64px-383px)] md:h-[calc(100dvh-68px-414px)] lg:h-[calc(100dvh-68px-335px)]  xl:h-[calc(100dvh-68px-266px)]">
           <Image
             src="/images/hero-image.jpg"
             alt="Real Estate City View"

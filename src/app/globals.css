@@ -40,7 +40,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary: black;
+    --primary: #1e1e1b;
+    --secondary: #8c8c8c;
+    --background: #ffffff;
+    --shad: 
   }
 }
 
