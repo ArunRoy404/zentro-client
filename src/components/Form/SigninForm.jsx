@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { json, z } from "zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import Message from "../ui/Message";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { signIn } from 'next-auth/react'
 
 
 
@@ -39,50 +40,36 @@ const SigninForm = () => {
     });
 
 
+
+
     const onSubmit = async (values) => {
-        // setIsLoading(true)
+        setIsLoading(true)
+        setStatus(null)
+        
+        try {
+            const credentials = { ...values, redirect: false }
+            const result = await signIn("credentials", credentials)
 
-        // body 
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(values),
-            redirect: 'follow'
-        };
-
-        console.log(values);
-
-        // try {
-        //     const response = await fetch("https://zentro-server.vercel.app/api/users/", requestOptions)
-        //     const data = await response.json();
-
-
-        //     // successful 
-        //     if (response.ok) {
-        //         setStatus({ type: 'success', ...data })
-        //         toast("Account Created Successfully.", {
-        //             action: {
-        //                 label: "Close",
-        //             },
-        //             duration: 5000,
-        //         })
-
-        //         // redirect to otp verification 
-        //         // router.push('/verify')
-        //     }
-
-        //     // unsuccessful 
-        //     else {
-        //         setStatus({ type: 'error', ...data });
-        //     }
-        // } catch (error) {
-        //     setStatus({ type: 'server-error', message: "Something went wrong", error })
-        // } finally {
-        //     setIsLoading(false)
-        // }
+            if (result?.ok) {
+                setStatus({ type: 'success', message: "Signin successful" })
+                toast("Signin Successful", {
+                    action: {
+                        label: "Close"
+                    }
+                })
+                // router.push('/')
+            } else {
+                setStatus({ type: 'error', message: "Invalid Credentials" })
+            }
+        } catch (error) {
+            // setStatus({type: 'error', message: "Invalid Credentials"})
+            setStatus({ type: 'error', message: "Something went wrong" })
+        } finally {
+            setIsLoading(false)
+        }
     }
+
+
 
     return (
         <div>
@@ -106,18 +93,17 @@ const SigninForm = () => {
                         </Link>
                     </div>
 
-
+                    <Message status={status} />
                     {/* Submit Button */}
                     <Button disabled={isLoading} type="submit" className="mt-6 cursor-pointer w-full text-xs md:text-base font-bold leading-6  md:py-6">
                         {
                             isLoading
                                 ? <Spinner stroke="10" color="white" size="10" />
-                                : ' Create Account '
+                                : 'Sign In'
                         }
                     </Button>
 
                     {/* status message  */}
-                    <Message status={status} />
                 </form>
             </Form>
         </div>
