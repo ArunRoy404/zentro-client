@@ -41,7 +41,7 @@ const RegistrationPage = () => {
                     </p>
                     <Link
                         href={'/signin'}
-                        className='text-primary font-semibold text-sm'
+                        className='text-primary font-bold text-sm'
                     >
                         sign in
                     </Link>

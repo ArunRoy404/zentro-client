@@ -40,7 +40,7 @@ const SigninPage = () => {
                     </p>
                     <Link
                         href={'/registration'}
-                        className='text-primary font-semibold text-sm'
+                        className='text-primary font-bold text-sm'
                     >
                         Get Started
                     </Link>
