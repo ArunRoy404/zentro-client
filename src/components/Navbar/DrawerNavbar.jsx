@@ -5,6 +5,7 @@ import {
     DrawerContent,
     DrawerFooter,
     DrawerHeader,
+    DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer"
 import { Menu } from "lucide-react"
@@ -19,18 +20,20 @@ export function DrawerNavbar() {
 
             {/* Drawer open button  */}
             <DrawerTrigger asChild>
-                <Button variant="ghost">
+                <Button variant="outline">
                     <Menu size={24} />
                 </Button>
             </DrawerTrigger>
 
             {/* content  */}
             <DrawerContent>
-                <div className="mx-auto w-full max-w-sm">
+                <div className="mx-auto w-full">
 
                     {/* logo  */}
                     <DrawerHeader>
-                        <Logo variant={'primary'} />
+                        <DrawerTitle className="">
+                            <Logo variant={'primary'} />
+                        </DrawerTitle>
                     </DrawerHeader>
 
                     {/* navigation links  */}
