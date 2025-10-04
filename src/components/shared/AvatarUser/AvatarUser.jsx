@@ -32,8 +32,9 @@ const buttons = [
 
 const AvatarUser = () => {
     const session = useSession()
-    const user = session?.data.user
+    const user = session?.data?.user
 
+    if(!user) return <></>
 
     return (
         <div className="">
@@ -43,8 +44,8 @@ const AvatarUser = () => {
                     <Tooltip>
                         <TooltipTrigger asChild>
                             <Avatar className={'cursor-pointer'}>
-                                <AvatarImage src="https://github.com/shadcn.png" />
-                                <AvatarFallback>{user?.name[0]}</AvatarFallback>
+                                <AvatarImage src={user?.photoUrl} />
+                                <AvatarFallback>{user?.name[0].toUpperCase()}</AvatarFallback>
                             </Avatar>
                         </TooltipTrigger>
                         <TooltipContent side={'left'}>
