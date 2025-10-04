@@ -12,14 +12,26 @@ const NavAuthenticationMobile = () => {
     //     </div>
     // )
     return (
-        <div className="w-full">
-            <Link href="/registration">
-                <DrawerClose asChild>
-                    <Button className='w-full'>
-                        Get Started
-                    </Button>
-                </DrawerClose>
-            </Link>
+        <div className="w-full space-y-2">
+            <div>
+                <Link href="/signin">
+                    <DrawerClose asChild>
+                        <Button variant={'outline'} className='w-full'>
+                            Sign In
+                        </Button>
+                    </DrawerClose>
+                </Link>
+            </div>
+
+            <div>
+                <Link href="/registration">
+                    <DrawerClose asChild>
+                        <Button variant={'outline'} className='w-full'>
+                            Get Started
+                        </Button>
+                    </DrawerClose>
+                </Link>
+            </div>
         </div>
     );
 };

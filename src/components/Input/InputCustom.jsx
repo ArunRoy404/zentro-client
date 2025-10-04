@@ -106,8 +106,8 @@ const InputCustom = ({ form, label, id, checkBox, children, textArea }) => {
                                     <Textarea
                                         {...field}
                                         id={id}
-                                        rows={5}
-                                        className="rounded-none peer focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
+                                        
+                                        className="rounded-none peer min-h-30 focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
                                     />
                                     {/* Label */}
                                     <FormLabel
@@ -115,7 +115,7 @@ const InputCustom = ({ form, label, id, checkBox, children, textArea }) => {
                                         className={`absolute left-3 duration-300 transition-all text-[rgba(145,158,171,1)] px-1
                                             ${isActive
                                                 ? "top-0 -translate-y-1/2 text-[10px] bg-white"
-                                                : "top-1/2 text-xs md:text-base -translate-y-1/2 peer-focus:top-0 peer-focus:text-xs peer-focus:bg-white"}
+                                                : "top-6 text-xs md:text-base -translate-y-1/2 peer-focus:top-0 peer-focus:text-xs peer-focus:bg-white"}
               `}
                                     >
                                         {label}
