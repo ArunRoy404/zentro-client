@@ -45,7 +45,7 @@ export function DrawerNavbar() {
 
                         {/* close button  */}
                         <DrawerClose asChild>
-                            <Button variant="outline">Close</Button>
+                            <Button>Close</Button>
                         </DrawerClose>
                     </DrawerFooter>
                 </div>
