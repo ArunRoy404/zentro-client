@@ -1,17 +1,12 @@
-'use client'
-
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import Section from "@/components/Section/Section"
 import { propertiesData } from "@/dummyData.jsx/properties"
 import PropertyCard from "@/components/properties/PropertyCard"
-import { useSession } from "next-auth/react"
 
 
 export default function FeaturedProperties() {
-  const data = useSession()
 
-  console.log(data);
   return (
     <Section >
       {/* Header */}
