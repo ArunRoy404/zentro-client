@@ -1,4 +1,5 @@
 import Categories from '@/section/Home/Categories';
+import FeaturedAgents from '@/section/Home/FeaturedAgents';
 import FeaturedProperties from '@/section/Home/FeaturedProperties';
 import Hero from '@/section/Home/Hero';
 
@@ -8,6 +9,7 @@ const HomePage = () => {
             <Hero />
             <FeaturedProperties/>
             <Categories/>
+            <FeaturedAgents/>
         </main>
     );
 };
