@@ -41,7 +41,7 @@ const PropertyCard = ({ property }) => {
             
 
             {/* Bottom row: Button & Price */}
-            <div className="flex items-center justify-between mt-4">
+            <div className="flex items-center justify-between mt-2 md:mt-4">
                 <p className="text-primary font-bold text-xl flex items-center gap-1">
                     $ {property.price.toLocaleString()}
                 </p>
