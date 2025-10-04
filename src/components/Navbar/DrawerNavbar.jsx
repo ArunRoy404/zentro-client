@@ -12,7 +12,7 @@ import { Menu } from "lucide-react"
 import MobileNavigation from "./MobileNavigation"
 import Logo from "../ui/Logo"
 import NavAuthenticationMobile from "./NavAuthenticationMobile"
-import AvatarUser from "../shared/AvatarUser/AvatarUser"
+// import AvatarUser from "../shared/AvatarUser/AvatarUser"
 
 export function DrawerNavbar() {
 
@@ -37,7 +37,7 @@ export function DrawerNavbar() {
                             <Logo variant={'primary'} />
 
                             {/* user avatar  */}
-                            <AvatarUser/>
+                            {/* <AvatarUser/> */}
                         </DrawerTitle>
                     </DrawerHeader>
 
