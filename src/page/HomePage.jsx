@@ -1,4 +1,4 @@
-import FeaturedProperties from '@/section/Home/FeaturedProperties/FeaturedProperties';
+import FeaturedProperties from '@/section/Home/FeaturedProperties';
 import Hero from '@/section/Home/Hero';
 
 const HomePage = () => {
