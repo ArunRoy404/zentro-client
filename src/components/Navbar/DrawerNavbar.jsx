@@ -12,6 +12,7 @@ import { Menu } from "lucide-react"
 import MobileNavigation from "./MobileNavigation"
 import Logo from "../ui/Logo"
 import NavAuthenticationMobile from "./NavAuthenticationMobile"
+import AvatarUser from "../shared/AvatarUser/AvatarUser"
 
 export function DrawerNavbar() {
 
@@ -31,8 +32,12 @@ export function DrawerNavbar() {
 
                     {/* logo  */}
                     <DrawerHeader>
-                        <DrawerTitle className="">
+                        <DrawerTitle className=" flex items-center justify-between">
+                            {/* zentro logo  */}
                             <Logo variant={'primary'} />
+
+                            {/* user avatar  */}
+                            <AvatarUser/>
                         </DrawerTitle>
                     </DrawerHeader>
 

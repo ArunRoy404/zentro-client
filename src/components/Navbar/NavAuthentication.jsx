@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 
 const NavAuthentication = () => {
     return (
-        <div className="hidden space-x-4 lg:block">
+        <div className="space-x-4">
 
             <Link href="/signin">
                 <Button variant={'outline'} >
