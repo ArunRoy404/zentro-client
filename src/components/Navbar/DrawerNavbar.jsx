@@ -12,7 +12,7 @@ import { Menu } from "lucide-react"
 import MobileNavigation from "./MobileNavigation"
 import Logo from "../ui/Logo"
 import NavAuthenticationMobile from "./NavAuthenticationMobile"
-// import AvatarUser from "../shared/AvatarUser/AvatarUser"
+import AvatarUser from "../shared/AvatarUser/AvatarUser"
 
 export function DrawerNavbar() {
 
@@ -28,32 +28,29 @@ export function DrawerNavbar() {
 
             {/* content  */}
             <DrawerContent>
-                <div className="mx-auto w-full">
+                {/* logo  */}
+                <DrawerHeader>
+                    <DrawerTitle className=" flex items-center justify-between">
+                        {/* zentro logo  */}
+                        <Logo variant={'primary'} />
 
-                    {/* logo  */}
-                    <DrawerHeader>
-                        <DrawerTitle className=" flex items-center justify-between">
-                            {/* zentro logo  */}
-                            <Logo variant={'primary'} />
+                        {/* user avatar  */}
+                        <AvatarUser />
+                    </DrawerTitle>
+                </DrawerHeader>
 
-                            {/* user avatar  */}
-                            {/* <AvatarUser/> */}
-                        </DrawerTitle>
-                    </DrawerHeader>
+                {/* navigation links  */}
+                <MobileNavigation />
 
-                    {/* navigation links  */}
-                    <MobileNavigation />
+                <DrawerFooter>
+                    {/* registration button  */}
+                    <NavAuthenticationMobile />
 
-                    <DrawerFooter>
-                        {/* registration button  */}
-                        <NavAuthenticationMobile />
-
-                        {/* close button  */}
-                        <DrawerClose asChild>
-                            <Button>Close</Button>
-                        </DrawerClose>
-                    </DrawerFooter>
-                </div>
+                    {/* close button  */}
+                    <DrawerClose asChild>
+                        <Button>Close</Button>
+                    </DrawerClose>
+                </DrawerFooter>
             </DrawerContent>
         </Drawer>
     )
