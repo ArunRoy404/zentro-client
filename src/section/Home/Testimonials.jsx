@@ -2,9 +2,10 @@
 
 import Section from "@/components/Section/Section"
 import SectionHeading from "@/components/shared/SectionHeading"
-import TestimonialCard from "@/components/Testimonial/TestimonialCard"
+import TestimonialContainer from "@/components/Testimonial/TestimonialContainer"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useRef } from "react"
 
 
 const testimonials = [
@@ -53,17 +54,23 @@ const testimonials = [
 ]
 
 const Testimonials = () => {
+    const swiperRef = useRef(null)
+
+    const handleSlideChange = direction => {
+        if (!swiperRef.current) return
+
+        if (direction === 'next') {
+            swiperRef.current.slideNext()
+        } else {
+            swiperRef.current.slidePrev()
+        }
+    }
+
+
+
     return (
         <Section bg={'bg-gray-50'}>
             <div>
-                {/* Header */}
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-gray-900"></h2>
-                    <p className="text-gray-600 mt-2">
-
-                    </p>
-                </div>
-
                 {/* heading  */}
                 <SectionHeading
                     title={'What Our Clients Say'}
@@ -71,19 +78,24 @@ const Testimonials = () => {
                     Button={() => {
                         return (
                             <div className="space-x-2">
-                                <Button variant={'outline'} size={'icon'}><ChevronLeft/></Button>
-                                <Button variant={'outline'} size={'icon'}><ChevronRight/></Button>
+                                <Button
+                                    onClick={() => handleSlideChange('prev')}
+                                    variant={'outline'} size={'icon'}>
+                                    <ChevronLeft />
+                                </Button>
+
+                                <Button
+                                    onClick={() => handleSlideChange('next')}
+                                    variant={'outline'} size={'icon'}>
+                                    <ChevronRight />
+                                </Button>
                             </div>
                         )
                     }}
                 />
 
-                {/* Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {testimonials.map((testimonial, idx) => (
-                        <TestimonialCard key={idx} testimonial={testimonial} />
-                    ))}
-                </div>
+                {/* Testimonials  */}
+                <TestimonialContainer swiperRef={swiperRef} data={testimonials} />
             </div>
         </Section>
     )
