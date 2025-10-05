@@ -4,7 +4,7 @@ import Link from 'next/link';
 const CategoriesCard = ({category}) => {
     return (
         <Link href={category.link}>
-            <Card className="group cursor-pointer border hover:shadow-lg transition-all duration-300 rounded-xl h-full">
+            <Card className="group cursor-pointer border shadow-none hover:shadow-lg transition-all duration-300 rounded-none h-full">
                 <CardContent className="flex flex-col items-center justify-center text-center h-full">
                     <div className="bg-primary/10 p-3 rounded-full mb-4 group-hover:bg-primary/20 transition-colors">
                         <category.icon className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
