@@ -56,7 +56,7 @@ const FeaturedAgents = () => {
       />
 
       {/* Agent Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 md:gap-24 lg:gap-12 xl:gap-24 2xl:gap-32">
         {agents.map((agent) => (
           <AgentCard key={agent._id} agent={agent} />
         ))}
