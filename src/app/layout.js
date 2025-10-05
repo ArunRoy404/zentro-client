@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import AuthProvider from "@/provider/AuthProvider";
+import LenisScroll from "@/provider/LenisScroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,9 +27,10 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
+          <LenisScroll/>
+          <Toaster />
           <Navbar />
           {children}
-          <Toaster />
         </AuthProvider>
       </body>
     </html>
