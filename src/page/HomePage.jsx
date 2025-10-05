@@ -2,6 +2,7 @@ import Categories from '@/section/Home/Categories';
 import FeaturedAgents from '@/section/Home/FeaturedAgents';
 import FeaturedProperties from '@/section/Home/FeaturedProperties';
 import Hero from '@/section/Home/Hero';
+import Testimonials from '@/section/Home/Testimonials';
 
 const HomePage = () => {
     return (
@@ -10,6 +11,7 @@ const HomePage = () => {
             <FeaturedProperties/>
             <Categories/>
             <FeaturedAgents/>
+            <Testimonials/>
         </main>
     );
 };
