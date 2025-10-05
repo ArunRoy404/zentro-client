@@ -40,7 +40,7 @@ const Categories = () => {
         <Section bg={'bg-gray-50'}>
             {/* heading  */}
             <SectionHeading
-                title={'Explore Our Categories'}
+                title={'Featured Categories'}
                 subtitle={` Choose from a variety of property types — whether you’re looking
                         to rent, buy, or invest in commercial and luxury spaces.`}
                 Button={() => {
