@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import Section from "@/components/Section/Section"
-import { propertiesData } from "@/dummyData.jsx/properties"
+import { propertiesData } from "@/dummyData/properties"
 import PropertyCard from "@/components/properties/PropertyCard"
 import SectionHeading from "@/components/shared/SectionHeading"
 
