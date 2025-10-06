@@ -1,5 +1,6 @@
 "use client";
 
+import Section from "@/components/Section/Section";
 import { Home, DollarSign, Users, ShieldCheck, BarChart } from "lucide-react";
 
 export default function WhatWeDo() {
@@ -32,7 +33,7 @@ export default function WhatWeDo() {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-8 lg:px-20 bg-background text-primary">
+    <Section>
       {/* Heading */}
       <div className="text-center mb-14">
         <div className="flex items-center justify-center gap-2 mb-4">
@@ -64,6 +65,6 @@ export default function WhatWeDo() {
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }
