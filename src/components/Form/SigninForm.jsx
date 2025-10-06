@@ -45,7 +45,7 @@ const SigninForm = () => {
     const onSubmit = async (values) => {
         setIsLoading(true)
         setStatus(null)
-        
+
         try {
             const credentials = { ...values, redirect: false }
             const result = await signIn("credentials", credentials)
@@ -57,7 +57,7 @@ const SigninForm = () => {
                         label: "Close"
                     }
                 })
-                // router.push('/')
+                router.push('/')
             } else {
                 setStatus({ type: 'error', message: "Invalid Credentials" })
             }
@@ -94,7 +94,10 @@ const SigninForm = () => {
                         </Link>
                     </div>
 
+                    {/* status message  */}
                     <Message status={status} />
+
+
                     {/* Submit Button */}
                     <Button disabled={isLoading} type="submit" className="mt-6 cursor-pointer w-full text-xs md:text-base font-bold leading-6  md:py-6">
                         {
@@ -103,8 +106,6 @@ const SigninForm = () => {
                                 : 'Sign In'
                         }
                     </Button>
-
-                    {/* status message  */}
                 </form>
             </Form>
         </div>

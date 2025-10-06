@@ -70,7 +70,7 @@ const RegisterForm = () => {
 
 
         try {
-            const response = await fetch("https://zentro-server.vercel.app/api/users/", requestOptions)
+            const response = await fetch("https://zentro-server.vercel.app/api/v1/users/", requestOptions)
             const data = await response.json();
 
 
@@ -84,8 +84,8 @@ const RegisterForm = () => {
                     duration: 5000,
                 })
 
-                // redirect to otp verification 
-                // router.push('/verify')
+                // redirect to signin
+                router.push('/signin')
             }
 
             // unsuccessful 
@@ -119,6 +119,8 @@ const RegisterForm = () => {
                         <a href="#" className="border-b-1 border-black cursor-pointer">Privacy Policy</a>.
                     </InputCustom>
 
+                    {/* status message  */}
+                    <Message status={status} />
 
                     {/* Submit Button */}
                     <Button disabled={isLoading} type="submit" className="mt-2 cursor-pointer w-full text-xs md:text-base font-bold leading-6  md:py-6">
@@ -129,8 +131,6 @@ const RegisterForm = () => {
                         }
                     </Button>
 
-                    {/* status message  */}
-                    <Message status={status} />
                 </form>
             </Form>
         </div>

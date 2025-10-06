@@ -1,17 +1,20 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import DesktopNavigation from './DesktopNavigation';
 import NavAuthentication from './NavAuthentication';
 import Logo from '../ui/Logo';
 import { usePathname } from 'next/navigation';
 import { DrawerNavbar } from './DrawerNavbar';
+import AvatarUser from '../shared/AvatarUser/AvatarUser';
+import { useSession } from 'next-auth/react';
 
 
 const Navbar = () => {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const toggleMenu = () => setMenuOpen(!menuOpen);
     const pathname = usePathname()
+    const session = useSession()
+
+
     if (pathname.includes('/dashboard') || pathname.includes('/signin') || pathname.includes('/registration')) {
         return <></>
     }
@@ -25,8 +28,15 @@ const Navbar = () => {
                 {/* Desktop Navigation */}
                 <DesktopNavigation />
 
-                {/* auth buttons */}
-                <NavAuthentication />
+                <div className='hidden lg:block'>
+                    {
+                        session.status === 'authenticated'
+                            ? <AvatarUser /> //user avatar
+                            : <NavAuthentication /> //authentication navigation
+                    }
+                </div>
+
+
 
                 {/* Mobile Hamburger */}
                 <div className='lg:hidden'>

@@ -12,7 +12,6 @@ const MobileNavigation = () => {
                     key={link.href}
                     href={link.href}
                     className={`${pathName == link.href ? 'text-primary font-bold' : ''}  hover:text-secondary`}
-                    onClick={() => setMenuOpen(false)}
                 >
                     {link.label}
                 </Link>
