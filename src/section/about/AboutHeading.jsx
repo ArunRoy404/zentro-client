@@ -1,6 +1,6 @@
 export default function AboutHeading() {
   return (
-    <div className="text-center max-w-3xl mx-auto py-10">
+    <div className="text-center max-w-3xl mx-auto">
       <h1 className="text-4xl md:text-5xl font-bold mb-4">
         <span className="text-secondary">About</span> Our Company
       </h1>
