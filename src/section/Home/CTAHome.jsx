@@ -11,7 +11,7 @@ const CTAHome = () => {
         {/* Background spherical gradient */}
         <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
           <div className="relative w-[800px] h-[800px] bg-white opacity-10 blur-[100px] rounded-full"></div>
-          <span className="absolute text-[200px] font-bold opacity-10 select-none">
+          <span className="absolute text-[130px] md:text-[200px] font-bold opacity-10 select-none">
             ZENTRO
           </span>
         </div>
