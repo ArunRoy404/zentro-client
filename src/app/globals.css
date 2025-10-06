@@ -4,7 +4,6 @@
 @import "swiper/css/pagination";
 @import "swiper/css/navigation";
 
-
 @custom-variant dark (&:is(.dark *));
 
 :root {
