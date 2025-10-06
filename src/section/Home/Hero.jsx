@@ -9,10 +9,11 @@ export default function Hero() {
         <div className="py-10 grid grid-cols-1 lg:grid-cols-2  md:gap-4 lg:gap-12 items-center">
 
           {/* heading  */}
-          <div>
+          <div className="relative max-h-max">
             <h1 className="text-4xl md:text-6xl font-bold text-neutral-900 leading-tight">
               Find Your Dream Home with <span className="text-secondary">Zentro</span>
             </h1>
+            <div className="absolute w-full bottom-0 bg-background animate-shrink-height" />
           </div>
 
 
@@ -40,6 +41,7 @@ export default function Hero() {
             priority
           />
           <div className="absolute inset-0 bg-neutral-900/20" />
+          <div className="absolute h-full right-0 bg-background animate-shrink" />
         </div>
       </div>
     </section>
