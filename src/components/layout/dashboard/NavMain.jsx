@@ -1,6 +1,15 @@
 "use client"
 
-import { ChevronRight } from "lucide-react"
+import {
+    Bot,
+    Settings2,
+    SquareTerminal,
+    BookOpen,
+    Building2,
+    Users,
+    User,
+    ChevronRight
+} from "lucide-react"
 
 import {
     Collapsible,
@@ -18,7 +27,41 @@ import {
     SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 
-export function NavMain({ items }) {
+const items = [
+    {
+        title: "Properties",
+        url: "/properties",
+        icon: Building2,
+        items: [
+            { title: "All Properties", url: "/properties" },
+            { title: "Add Property", url: "/properties/add" },
+            { title: "Categories", url: "/properties/categories" },
+        ],
+    },
+    {
+        title: "Agents",
+        url: "/agents",
+        icon: Users,
+        items: [
+            { title: "All Agents", url: "/agents" },
+            { title: "Applications", url: "/agents/applications" },
+            { title: "Add Agent", url: "/agents/add" },
+        ],
+    },
+    {
+        title: "Users",
+        url: "/users",
+        icon: User,
+        items: [
+            { title: "All Users", url: "/users" },
+            { title: "Add User", url: "/users/add" },
+        
+        ],
+    },
+]
+
+
+export function NavMain() {
     return (
         <SidebarGroup>
             <SidebarGroupLabel>Platform</SidebarGroupLabel>
