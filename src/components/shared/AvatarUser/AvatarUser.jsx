@@ -89,7 +89,7 @@ const AvatarUser = () => {
                         disabled={isLoading}
                         variant="ghost"
                         className="w-full justify-start text-red-600" >
-                        <LogOut className="mr-4 h-4 w-4" />
+                        <LogOut className="mr-2 h-4 w-4" />
 
                         {
                             isLoading
