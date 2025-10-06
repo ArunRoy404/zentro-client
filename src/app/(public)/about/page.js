@@ -1,4 +1,11 @@
-import AboutPage from "@/page/AboutPage";
+import React from 'react'
 
-const page = () => <AboutPage></AboutPage>;
-export default page;
+const page = () => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default page
