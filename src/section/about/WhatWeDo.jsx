@@ -51,17 +51,15 @@ export default function WhatWeDo() {
         {services.map((item, index) => (
           <div
             key={index}
-            className="p-6 bg-[var(--background)] hover:bg-[var(--shad)]/10 transition-colors duration-300 rounded-xl"
+            className="p-6 bg-background hover:bg-shad/10 transition-colors duration-300"
           >
             <div className="flex items-center gap-3 mb-4">
               {item.icon}
-              <h3 className="text-xl font-semibold text-[var(--primary)]">
+              <h3 className="text-xl font-semibold text-primary">
                 {item.title}
               </h3>
             </div>
-            <p className="text-[var(--secondary)] leading-relaxed">
-              {item.desc}
-            </p>
+            <p className="text-secondary leading-relaxed">{item.desc}</p>
           </div>
         ))}
       </div>
