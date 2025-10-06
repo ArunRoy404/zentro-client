@@ -1,0 +1,45 @@
+@keyframes expand {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes shrink {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
+}
+
+@keyframes shrink-height {
+    from {
+        height: 100%;
+    }
+
+    to {
+        height: 0%;
+    }
+}
+
+.animate-expand {
+    width: 0;
+    animation: expand 2s ease-in-out forwards;
+}
+
+
+.animate-shrink {
+    width: 0;
+    animation: shrink 1.5s ease-in-out forwards;
+}
+
+.animate-shrink-height {
+    height: 100%;
+    animation: shrink-height 1.5s ease-in-out forwards;
+}
