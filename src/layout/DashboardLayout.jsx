@@ -29,7 +29,7 @@ export default function DashboardLayout({ children }) {
 
 
             <SidebarInset>
-                <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+                <header className="fixed z-10 bg-background top-0 border-b w-full flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
                     <div className="flex items-center gap-2 px-4">
                         <SidebarTrigger className="-ml-1" />
                         <Separator
@@ -60,7 +60,9 @@ export default function DashboardLayout({ children }) {
 
 
                 {/* child contents  */}
-                {children}
+                <div className="pt-16">
+                    {children}
+                </div>
             </SidebarInset>
         </SidebarProvider>
     )
