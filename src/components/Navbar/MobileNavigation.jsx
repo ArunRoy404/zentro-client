@@ -1,21 +1,30 @@
+import { navLinks } from '@/content/navData';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import navData from '../../content/navData.json';
+import { Button } from '../ui/button';
+
 
 const MobileNavigation = () => {
     const pathName = usePathname()
     return (
         <div className="bg-white flex flex-col gap-4 px-6 py-4">
-            {navData?.navLinks?.map((link) => (
-                <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`${pathName == link.href ? 'text-primary font-bold' : ''}  hover:text-secondary`}
-                >
-                    {link.label}
-                </Link>
-            ))}
+            {navLinks?.map((link) => {
+                const {href, label, icon: Icon } = link
+                return (
+                    <Link
+                        key={href}
+                        href={href}
+                    >
+                        <Button
+                            className={`${pathName == href ? 'text-primary font-bold' : ''} h-4 hover:text-secondary`}
+                            variant="link">
+                            <Icon />
+                            {label}
+                        </Button>
+                    </Link>
+                )
+            })}
         </div>
     );
 };

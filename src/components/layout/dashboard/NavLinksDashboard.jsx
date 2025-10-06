@@ -24,7 +24,7 @@ const navLinks = [
 export function NavLinksDashboard() {
     return (
         <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-            <SidebarGroupLabel>Projects</SidebarGroupLabel>
+            <SidebarGroupLabel>Navigation</SidebarGroupLabel>
             <SidebarMenu>
                 {navLinks.map((item) => (
                     <SidebarMenuItem key={item.name}>

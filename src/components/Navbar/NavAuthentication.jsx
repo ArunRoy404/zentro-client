@@ -10,8 +10,8 @@ const NavAuthentication = () => {
                     Sign In
                 </Button>
             </Link>
-
-            <Link href="/registration">
+            
+            <Link href="/properties">
                 <Button>
                     Get Started
                 </Button>

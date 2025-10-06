@@ -13,6 +13,7 @@ import MobileNavigation from "./MobileNavigation"
 import Logo from "../ui/Logo"
 import NavAuthenticationMobile from "./NavAuthenticationMobile"
 import AvatarUser from "../shared/AvatarUser/AvatarUser"
+import Link from "next/link"
 
 export function DrawerNavbar() {
 
@@ -46,12 +47,22 @@ export function DrawerNavbar() {
                     {/* registration button  */}
                     <NavAuthenticationMobile />
 
+                    {/* get started  */}
+
+                    <Link href="/properties">
+                        <DrawerClose asChild>
+                            <Button variant={'outline'} className='w-full'>
+                                Get Started
+                            </Button>
+                        </DrawerClose>
+                    </Link>
+
                     {/* close button  */}
                     <DrawerClose asChild>
                         <Button>Close</Button>
                     </DrawerClose>
                 </DrawerFooter>
             </DrawerContent>
-        </Drawer>
+        </Drawer >
     )
 }
