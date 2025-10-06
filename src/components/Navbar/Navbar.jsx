@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 import { DrawerNavbar } from './DrawerNavbar';
 import AvatarUser from '../shared/AvatarUser/AvatarUser';
 import { useSession } from 'next-auth/react';
+import ThemeToggle from '../Toggle/ThemeToggle';
 
 
 const Navbar = () => {
@@ -29,11 +30,14 @@ const Navbar = () => {
                 <DesktopNavigation />
 
                 <div className='hidden lg:block'>
-                    {
-                        session.status === 'authenticated'
-                            ? <AvatarUser /> //user avatar
-                            : <NavAuthentication /> //authentication navigation
-                    }
+                    <div className='flex items-center gap-4'>
+                        <ThemeToggle />
+                        {
+                            session.status === 'authenticated'
+                                ? <AvatarUser /> //user avatar
+                                : <NavAuthentication /> //authentication navigation
+                        }
+                    </div>
                 </div>
 
 

@@ -7,16 +7,17 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --primary: oklch(0.205 0 0);
+  --primary: #1e1e1b;
+  --secondary: #8c8c8c;
+  --background: #ffffff;
+  --shad: #cccccc;
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
@@ -41,14 +42,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary: #1e1e1b;
-    --secondary: #8c8c8c;
-    --background: #ffffff;
-    --shad: #cccccc;
-  }
-}
+
 
 @theme inline {
   --color-primary: var(--primary);
@@ -88,7 +82,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-shad: var(--shad);
+  --shad: #cccccc;
 }
 
 .dark {
@@ -135,4 +129,3 @@
     @apply bg-background text-foreground;
   }
 }
-

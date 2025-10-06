@@ -14,6 +14,7 @@ import Logo from "../ui/Logo"
 import NavAuthenticationMobile from "./NavAuthenticationMobile"
 import AvatarUser from "../shared/AvatarUser/AvatarUser"
 import Link from "next/link"
+import ThemeToggle from "../Toggle/ThemeToggle"
 
 export function DrawerNavbar() {
 
@@ -35,8 +36,11 @@ export function DrawerNavbar() {
                         {/* zentro logo  */}
                         <Logo variant={'primary'} />
 
-                        {/* user avatar  */}
-                        <AvatarUser />
+                        <div className="flex items-center gap-4">
+                            <ThemeToggle />
+                            {/* user avatar  */}
+                            <AvatarUser />
+                        </div>
                     </DrawerTitle>
                 </DrawerHeader>
 

@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import AuthProvider from "@/provider/AuthProvider";
 import LenisScroll from "@/provider/LenisScroll";
+import NextThemeProvider from "@/provider/NextThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,15 +38,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          <LenisScroll />
-          <Toaster />
-          <Navbar />
-          {children}
+          <NextThemeProvider>
+            <LenisScroll />
+            <Toaster />
+            <Navbar />
+            {children}
+          </NextThemeProvider>
         </AuthProvider>
       </body>
     </html>
