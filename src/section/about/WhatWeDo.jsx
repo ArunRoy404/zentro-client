@@ -33,7 +33,7 @@ export default function WhatWeDo() {
   ];
 
   return (
-    <Section>
+    <Section bg="bg-gray-50">
       {/* Heading */}
       <div className="text-center mb-14">
         <div className="flex items-center justify-center gap-2 mb-4">

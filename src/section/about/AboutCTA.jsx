@@ -1,7 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Shield, Briefcase, Search } from "lucide-react";
+import { Shield, Briefcase, Search, ArrowRight } from "lucide-react";
+import { Stats } from "./Stats";
+import Section from "@/components/Section/Section";
 
 export default function AboutRolesSection() {
   const roles = [
@@ -23,7 +25,7 @@ export default function AboutRolesSection() {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-8 lg:px-20 bg-background text-primary">
+    <Section bg="bg-gray-50">
       {/* Roles Section */}
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-14">
@@ -58,10 +60,23 @@ export default function AboutRolesSection() {
           property owners. Together, we’re redefining the future of real estate
           — one property at a time.
         </p>
-        <Button className="px-8 py-6 text-lg font-semibold">
-          Explore Properties
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button size="lg" className="text-base">
+            Contact Us Today
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="text-base bg-transparent"
+          >
+            View Properties
+          </Button>
+        </div>
+        <div className="mt-10">
+          <Stats></Stats>
+        </div>
       </div>
-    </section>
+    </Section>
   );
 }

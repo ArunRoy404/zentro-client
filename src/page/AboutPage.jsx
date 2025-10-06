@@ -1,8 +1,8 @@
 import PageHeading from "@/components/shared/PageHeading";
 import AboutRolesSection from "@/section/about/AboutCTA";
-import AboutCTA from "@/section/about/AboutCTA";
 import AboutHeading from "@/section/about/AboutHeading";
-import Roles from "@/section/about/Roles";
+import { CoreValues } from "@/section/about/CoreValues";
+import OurExpertise from "@/section/about/OurExpertise";
 import WhatWeDo from "@/section/about/WhatWeDo";
 import React from "react";
 
@@ -15,7 +15,9 @@ const AboutPage = () => {
       ></PageHeading>
       <AboutHeading></AboutHeading>
       <WhatWeDo></WhatWeDo>
+      <OurExpertise></OurExpertise>
       <AboutRolesSection></AboutRolesSection>
+      <CoreValues></CoreValues>
     </div>
   );
 };

@@ -1,10 +1,11 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Section from "@/components/Section/Section";
 
-const Ourexpertise = () => {
+const OurExpertise = () => {
   return (
-    <section className="py-20 md:py-32">
+    <Section>
       {/* Container */}
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
         {/* Section Header */}
@@ -71,8 +72,8 @@ const Ourexpertise = () => {
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 
-export default Ourexpertise;
+export default OurExpertise;
