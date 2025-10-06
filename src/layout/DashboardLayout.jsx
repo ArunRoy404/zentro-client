@@ -6,7 +6,6 @@ import {
     BreadcrumbItem,
     BreadcrumbLink,
     BreadcrumbList,
-    BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { Separator } from "@/components/ui/separator"
@@ -43,12 +42,12 @@ export default function DashboardLayout({ children }) {
                                     pathSegments.map((path, index) => {
                                         return (
                                             <div key={index} className="flex items-center gap-2">
-                                                <BreadcrumbItem className="hidden md:block">
+                                                <BreadcrumbItem className="">
                                                     <BreadcrumbLink href="#">
                                                         <span className={`${pathSegments.length === index + 1 ? 'text-black' : ''}`}>{path}</span>
                                                     </BreadcrumbLink>
                                                 </BreadcrumbItem>
-                                                <BreadcrumbSeparator className={`hidden ${pathSegments.length !== index + 1 ? 'md:block' : ''}`} />
+                                                <BreadcrumbSeparator className={`${pathSegments.length !== index + 1 ? '' : 'hidden '}`} />
                                             </div>
                                         )
                                     })
