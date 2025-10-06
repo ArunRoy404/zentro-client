@@ -11,10 +11,13 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { LogOut, Settings, User } from "lucide-react";
 import { Button } from "../../ui/button";
 import AvatarButton from "./AvatarButton";
+import { useState } from "react";
+import { toast } from "sonner";
+import Spinner from "@/components/ui/Spinner";
 
 
 const buttons = [
@@ -33,8 +36,21 @@ const buttons = [
 const AvatarUser = () => {
     const session = useSession()
     const user = session?.data?.user
+    const [isLoading, setIsLoading] = useState(false);
 
-    if(!user) return <></>
+    const handleSignout = async (e) => {
+        setIsLoading(true)
+        try {
+            await signOut({ redirect: false })
+            toast.success("Signout successful")
+        } catch {
+            toast.error("Signout unsuccessful")
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
+    if (!user) return <></>
 
     return (
         <div className="">
@@ -69,10 +85,17 @@ const AvatarUser = () => {
                     ))}
 
                     <Button
+                        onClick={handleSignout}
+                        disabled={isLoading}
                         variant="ghost"
                         className="w-full justify-start text-red-600" >
-                        <LogOut className="mr-2 h-4 w-4" />
-                        Sign out
+                        <LogOut className="mr-4 h-4 w-4" />
+
+                        {
+                            isLoading
+                                ? <span className="ml-4"> <Spinner size='8' /></span>
+                                : 'Sign out'
+                        }
                     </Button>
                 </PopoverContent>
             </Popover>
