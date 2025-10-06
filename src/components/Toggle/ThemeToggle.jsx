@@ -12,7 +12,7 @@ const ThemeToggle = () => {
             <Button
                 variant="ghost"
                 size="icon"
-                className={'rounded-full mb-1'}
+                className={'rounded-full'}
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
                 {theme === "dark" ? (
