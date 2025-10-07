@@ -1,4 +1,6 @@
+import AgentCTASection from "@/section/agents/AgentCTASection";
 import { AgentsHeading } from "@/section/agents/AgentsHeading";
+import ApplyRequirementsSection from "@/section/agents/ApplyRequirementsSection";
 import WhyApplySection from "@/section/agents/WhyApplySection";
 import React from "react";
 
@@ -7,6 +9,8 @@ const AgentsPage = () => {
     <div>
       <AgentsHeading></AgentsHeading>
       <WhyApplySection></WhyApplySection>
+      <ApplyRequirementsSection></ApplyRequirementsSection>
+      <AgentCTASection></AgentCTASection>
     </div>
   );
 };
