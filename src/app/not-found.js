@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import InputCustom from "@/components/Input/InputCustom";
+import Link from "next/link";
 
 // Validation schema
 const searchSchema = z.object({
@@ -97,7 +98,7 @@ export default function NotFound() {
             {/* Actions */}
             <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-10">
               <Button asChild size="lg" className="font-semibold">
-                <a href="/">Back to Home</a>
+                <Link href="/">Back to Home</Link>
               </Button>
               <Button
                 asChild
@@ -105,7 +106,7 @@ export default function NotFound() {
                 size="lg"
                 className="border-border/50 text-foreground/90"
               >
-                <a href="/contact">Contact Support</a>
+                <Link href="/contact">Contact Support</Link>
               </Button>
             </div>
 
