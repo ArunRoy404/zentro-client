@@ -98,7 +98,7 @@ const demoColumns = [
     },
     {
         accessorKey: "target",
-        header: () => <div className="w-full text-right">Target</div>,
+        header: () => <div className="w-full ">Target</div>,
         cell: ({ row }) => (
             <form
                 onSubmit={(e) => {
@@ -114,7 +114,7 @@ const demoColumns = [
                     Target
                 </Label>
                 <Input
-                    className="hover:bg-input/30 focus-visible:bg-background dark:hover:bg-input/30 dark:focus-visible:bg-input/30 h-8 w-16 border-transparent bg-transparent text-right shadow-none focus-visible:border dark:bg-transparent"
+                    className="hover:bg-input/30 focus-visible:bg-background dark:hover:bg-input/30 dark:focus-visible:bg-input/30 h-8 w-16 border-transparent bg-transparent shadow-none focus-visible:border dark:bg-transparent"
                     defaultValue={row.original.target}
                     id={`${row.original.id}-target`}
                 />
@@ -123,7 +123,7 @@ const demoColumns = [
     },
     {
         accessorKey: "limit",
-        header: () => <div className="w-full text-right">Limit</div>,
+        header: () => <div className="w-full">Limit</div>,
         cell: ({ row }) => (
             <form
                 onSubmit={(e) => {
@@ -139,7 +139,7 @@ const demoColumns = [
                     Limit
                 </Label>
                 <Input
-                    className="hover:bg-input/30 focus-visible:bg-background dark:hover:bg-input/30 dark:focus-visible:bg-input/30 h-8 w-16 border-transparent bg-transparent text-right shadow-none focus-visible:border dark:bg-transparent"
+                    className="hover:bg-input/30 focus-visible:bg-background dark:hover:bg-input/30 dark:focus-visible:bg-input/30 h-8 w-16 border-transparent bg-transparent shadow-none focus-visible:border dark:bg-transparent"
                     defaultValue={row.original.limit}
                     id={`${row.original.id}-limit`}
                 />
