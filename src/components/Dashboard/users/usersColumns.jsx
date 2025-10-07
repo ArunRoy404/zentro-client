@@ -1,36 +1,12 @@
 "use client"
 
 import * as React from "react"
-import {
-    IconCircleCheckFilled,
-    IconDotsVertical,
-    IconLoader,
-} from "@tabler/icons-react"
 import { toast } from "sonner"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import DragHandle from "../Table/DragHandle"
-import TableCellViewer from "../Table/TableCellViewer"
 import Image from "next/image"
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
 import { BanDialog } from "./BanDialog"
 import SelectUserRole from "./SelectUserRole"
 import { ArrowUpDown } from "lucide-react"
@@ -191,28 +167,6 @@ const usersColumns = [
             );
         },
     },
-
-
-    // {
-    //     accessorKey: "header",
-    //     header: "Header",
-    //     cell: ({ row }) => {
-    //         return <TableCellViewer item={row.original} />
-    //     },
-    //     enableHiding: false,
-    // },
-    // {
-    //     accessorKey: "type",
-    //     header: "Section Type",
-    //     cell: ({ row }) => (
-    //         <div className="w-32">
-    //             <Badge variant="outline" className="text-muted-foreground px-1.5">
-    //                 {row.original.type}
-    //             </Badge>
-    //         </div>
-    //     ),
-    // },
-
 ]
 
 

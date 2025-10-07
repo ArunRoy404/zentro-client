@@ -61,11 +61,10 @@ import {
 import {
     Tabs,
     TabsContent,
-    TabsList,
-    TabsTrigger,
 } from "@/components/ui/tabs"
 
 import DraggableRow from "./Table/DraggableRow"
+import { Input } from "../ui/input"
 
 
 
@@ -136,7 +135,20 @@ export function DataTable({ columns, data: initialData, }) {
             defaultValue="outline"
             className="w-full flex-col justify-start gap-6"
         >
-            <div className="flex items-center justify-end ">
+            <div className="flex items-center justify-between ">
+
+                {/* search bar  */}
+                <Input
+                    placeholder="Filter emails..."
+                    value={(table.getColumn("email")?.getFilterValue()) ?? ""}
+                    onChange={(event) =>
+                        table.getColumn("email")?.setFilterValue(event.target.value)
+                    }
+                    className="max-w-xs rounded-none peer focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
+                />
+
+
+
                 {/* dropdown  */}
                 <div className="flex items-center gap-2">
                     <DropdownMenu>
