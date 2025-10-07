@@ -4,11 +4,9 @@ import Section from "../Section/Section";
 const PageHeading = ({ title, subtitle }) => {
   return (
     <Section bg={"bg-primary"}>
-      <div className="container mx-auto px-4 pt-36 pb-24 text-white text-center">
+      <div className="container mx-auto px-4 pt-10 text-white text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">{title}</h1>
-        <p className="text-lg max-w-2xl mx-auto text-[var(--secondary)]">
-          {subtitle}
-        </p>
+        <p className="text-lg max-w-2xl mx-auto text-secondary">{subtitle}</p>
       </div>
     </Section>
   );
