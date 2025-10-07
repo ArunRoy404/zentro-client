@@ -18,7 +18,7 @@ export default function ApplyCard() {
         and start earning today!
       </p>
       <Button asChild size="lg">
-        <a href="/apply-agent">Apply Now</a>
+        <a href="/agents/apply-agent">Apply Now</a>
       </Button>
     </div>
   );

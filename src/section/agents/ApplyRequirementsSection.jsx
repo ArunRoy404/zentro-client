@@ -40,7 +40,7 @@ export default function ApplyRequirementsSection() {
         {requirements.map((item, idx) => (
           <div
             key={idx}
-            className="flex items-start gap-4 p-6 rounded-xl bg-background/5 shadow-shad border border-border hover:translate-x-2 transition-transform duration-300"
+            className="flex items-start gap-4 p-6 bg-background/5 border border-border hover:translate-x-2 transition-transform duration-300"
           >
             <div className="flex-shrink-0">{item.icon}</div>
             <div>
@@ -54,7 +54,7 @@ export default function ApplyRequirementsSection() {
       </div>
 
       {/*  Important Note Section */}
-      <div className="mt-16 p-6 bg-primary/10 border border-primary/40 text-center max-w-3xl mx-auto">
+      <div className="mt-16 p-6 bg-primary/10 border border-secondary text-center max-w-3xl mx-auto">
         <div className="flex items-center justify-center gap-2 mb-2">
           <AlertCircle className="w-6 h-6 text-primary" />
           <h3 className="text-xl font-semibold text-primary">

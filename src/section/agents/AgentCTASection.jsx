@@ -48,7 +48,7 @@ export default function AgentCTASection() {
           size="lg"
           className="w-full max-w-sm bg-secondary hover:bg-secondary/90 text-white font-semibold px-10 py-5 text-lg inline-flex items-center justify-center gap-2 transition"
         >
-          <Link href="/apply-agent">
+          <Link href="/agents/apply-agent">
             Apply Now <ArrowRight className="w-5 h-5" />
           </Link>
         </Button>
