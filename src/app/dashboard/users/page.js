@@ -1,11 +1,4 @@
-import React from 'react';
+import AllUsers from '@/page/dashboard/users/AllUsers';
 
-const page = () => {
-    return (
-        <div>
-            yo
-        </div>
-    );
-};
-
+const page = () => <AllUsers/>
 export default page;
