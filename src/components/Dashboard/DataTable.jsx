@@ -61,11 +61,10 @@ import {
 import {
     Tabs,
     TabsContent,
-    TabsList,
-    TabsTrigger,
 } from "@/components/ui/tabs"
 
 import DraggableRow from "./Table/DraggableRow"
+import { Input } from "../ui/input"
 
 
 
@@ -136,7 +135,20 @@ export function DataTable({ columns, data: initialData, }) {
             defaultValue="outline"
             className="w-full flex-col justify-start gap-6"
         >
-            <div className="flex items-center justify-end px-4 lg:px-6">
+            <div className="flex items-center justify-between ">
+
+                {/* search bar  */}
+                <Input
+                    placeholder="Filter emails..."
+                    value={(table.getColumn("email")?.getFilterValue()) ?? ""}
+                    onChange={(event) =>
+                        table.getColumn("email")?.setFilterValue(event.target.value)
+                    }
+                    className="max-w-xs rounded-none peer focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
+                />
+
+
+
                 {/* dropdown  */}
                 <div className="flex items-center gap-2">
                     <DropdownMenu>
@@ -180,9 +192,9 @@ export function DataTable({ columns, data: initialData, }) {
             {/* table  */}
             <TabsContent
                 value="outline"
-                className="relative flex flex-col gap-4 overflow-auto px-4 lg:px-6"
+                className="relative flex flex-col gap-4 overflow-auto "
             >
-                <div className="overflow-hidden rounded-lg border">
+                <div className="overflow-hidden border">
                     <DndContext
                         collisionDetection={closestCenter}
                         modifiers={[restrictToVerticalAxis]}

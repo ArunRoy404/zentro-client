@@ -3,11 +3,27 @@
 import * as React from "react"
 import { toast } from "sonner"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import DragHandle from "../Table/DragHandle"
 import Image from "next/image"
 import { BanDialog } from "./BanDialog"
 import SelectUserRole from "./SelectUserRole"
+import { ArrowUpDown } from "lucide-react"
+
+
+const SortingColumn = ({ column, children }) => {
+    return (
+        <Button
+            variant="ghost"
+            className='!p-0'
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+            {children}
+            <ArrowUpDown />
+        </Button>
+    )
+}
 
 
 
@@ -62,7 +78,8 @@ const usersColumns = [
 
     // Name
     {
-        header: "Name",
+        accessorKey: "name",
+        header: ({ column }) => <SortingColumn column={column}>Name</SortingColumn>,
         cell: ({ row }) => (
             <div className="font-medium text-sm">{row.original.name}</div>
         ),
@@ -70,7 +87,8 @@ const usersColumns = [
 
     // Email
     {
-        header: "Email",
+        accessorKey: "email",
+        header: ({ column }) => <SortingColumn column={column}>Email</SortingColumn>,
         cell: ({ row }) => (
             <div className="truncate text-muted-foreground text-sm w-40">
                 {row.original.email}
@@ -80,6 +98,7 @@ const usersColumns = [
 
     // Phone
     {
+        accessorKey: "phone",
         header: "Phone",
         cell: ({ row }) => (
             <div className="text-sm text-muted-foreground">{row.original.phone}</div>
@@ -88,7 +107,8 @@ const usersColumns = [
 
     // Address
     {
-        header: "Address",
+        accessorKey: "address",
+        header: ({ column }) => <SortingColumn column={column}>Address</SortingColumn>,
         cell: ({ row }) => (
             <div className="truncate text-sm text-muted-foreground w-32">
                 {row.original.address}
@@ -98,7 +118,8 @@ const usersColumns = [
 
     // Role with badge
     {
-        header: "Role",
+        accessorKey: "role",
+        header: ({ column }) => <SortingColumn column={column}>Role</SortingColumn>,
         cell: ({ row }) => (
             <Badge
                 variant={row.original.role === "agent" ? "default" : "outline"}
@@ -111,7 +132,8 @@ const usersColumns = [
 
     // Created date
     {
-        header: "Created At",
+        accessorKey: "accountCreatedAt",
+        header: ({ column }) => <SortingColumn column={column}>Created At</SortingColumn>,
         cell: ({ row }) => {
             const date = new Date(row.original.accountCreatedAt);
             return (
@@ -146,5 +168,6 @@ const usersColumns = [
         },
     },
 ]
+
 
 export default usersColumns;

@@ -35,7 +35,7 @@ const items = [
         items: [
             { title: "All Properties", url: "/dashboard/properties" },
             { title: "Add Property", url: "/dashboard/properties/add" },
-            { title: "Categories", url: "/dashboard/properties/categories" },
+            // { title: "Categories", url: "/dashboard/properties/categories" },
         ],
     },
     {
@@ -45,7 +45,7 @@ const items = [
         items: [
             { title: "All Agents", url: "/dashboard/agents" },
             { title: "Applications", url: "/dashboard/agents/applications" },
-            { title: "Add Agent", url: "/dashboard/agents/add" },
+            // { title: "Add Agent", url: "/dashboard/agents/add" },
         ],
     },
     {
@@ -54,7 +54,7 @@ const items = [
         icon: User,
         items: [
             { title: "All Users", url: "/dashboard/users" },
-            { title: "Add User", url: "/dashboard/users/add" },
+            // { title: "Add User", url: "/dashboard/users/add" },
         
         ],
     },
