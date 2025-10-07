@@ -35,6 +35,9 @@ export default function DashboardLayout({ children }) {
                             orientation="vertical"
                             className="mr-2 data-[orientation=vertical]:h-4"
                         />
+
+
+                        {/* breadcrumbs  */}
                         <Breadcrumb>
                             <BreadcrumbList>
 
@@ -44,7 +47,11 @@ export default function DashboardLayout({ children }) {
                                             <div key={index} className="flex items-center gap-2">
                                                 <BreadcrumbItem className="">
                                                     <BreadcrumbLink href="#">
-                                                        <span className={`${pathSegments.length === index + 1 ? 'text-black' : ''}`}>{path}</span>
+                                                        <span className={`${pathSegments.length === index + 1 ? 'text-black' : ''}`}>
+                                                            {
+                                                                path[0].toUpperCase() + path.slice(1,path.length)
+                                                            }
+                                                        </span>
                                                     </BreadcrumbLink>
                                                 </BreadcrumbItem>
                                                 <BreadcrumbSeparator className={`${pathSegments.length !== index + 1 ? '' : 'hidden '}`} />
