@@ -1,13 +1,16 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export default function ApplyCard() {
   return (
-    <div className="relative rounded-xl overflow-hidden shadow-shad p-8 bg-background/5 border border-border">
-      <img
-        src="/images/agent-illustration.png"
+    <div className="relative overflow-hidden shadow-shad p-8 bg-background/5 border border-border">
+      <Image
+        src="/images/agent-illustration.jpg"
         alt="Agent Illustration"
-        className="w-full h-auto mb-6 rounded-lg"
+        width={200}
+        height={200}
+        className="mb-6 mx-auto rounded-lg"
       />
       <p className="text-foreground/70 mb-6">
         Applying as an agent with Zentro allows you to grow your business while
