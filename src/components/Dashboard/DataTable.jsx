@@ -136,7 +136,7 @@ export function DataTable({ columns, data: initialData, }) {
             defaultValue="outline"
             className="w-full flex-col justify-start gap-6"
         >
-            <div className="flex items-center justify-end px-4 lg:px-6">
+            <div className="flex items-center justify-end ">
                 {/* dropdown  */}
                 <div className="flex items-center gap-2">
                     <DropdownMenu>
@@ -180,9 +180,9 @@ export function DataTable({ columns, data: initialData, }) {
             {/* table  */}
             <TabsContent
                 value="outline"
-                className="relative flex flex-col gap-4 overflow-auto px-4 lg:px-6"
+                className="relative flex flex-col gap-4 overflow-auto "
             >
-                <div className="overflow-hidden rounded-lg border">
+                <div className="overflow-hidden border">
                     <DndContext
                         collisionDetection={closestCenter}
                         modifiers={[restrictToVerticalAxis]}
