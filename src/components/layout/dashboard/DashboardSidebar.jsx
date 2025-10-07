@@ -16,7 +16,7 @@ import { TeamSwitcher } from "./TeamSwitcher"
 
 export function DashboardSidebar(props) {
     return (
-        <Sidebar collapsible="icon" {...props}>
+        <Sidebar collapsible="icon" {...props} className={'z-[100]'}>
             <SidebarHeader>
                 <TeamSwitcher />
             </SidebarHeader>

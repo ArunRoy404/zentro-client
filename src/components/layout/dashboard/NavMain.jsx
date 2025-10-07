@@ -33,9 +33,9 @@ const items = [
         url: "/properties",
         icon: Building2,
         items: [
-            { title: "All Properties", url: "/properties" },
-            { title: "Add Property", url: "/properties/add" },
-            { title: "Categories", url: "/properties/categories" },
+            { title: "All Properties", url: "/dashboard/properties" },
+            { title: "Add Property", url: "/dashboard/properties/add" },
+            { title: "Categories", url: "/dashboard/properties/categories" },
         ],
     },
     {
@@ -43,9 +43,9 @@ const items = [
         url: "/agents",
         icon: Users,
         items: [
-            { title: "All Agents", url: "/agents" },
-            { title: "Applications", url: "/agents/applications" },
-            { title: "Add Agent", url: "/agents/add" },
+            { title: "All Agents", url: "/dashboard/agents" },
+            { title: "Applications", url: "/dashboard/agents/applications" },
+            { title: "Add Agent", url: "/dashboard/agents/add" },
         ],
     },
     {
@@ -53,8 +53,8 @@ const items = [
         url: "/users",
         icon: User,
         items: [
-            { title: "All Users", url: "/users" },
-            { title: "Add User", url: "/users/add" },
+            { title: "All Users", url: "/dashboard/users" },
+            { title: "Add User", url: "/dashboard/users/add" },
         
         ],
     },

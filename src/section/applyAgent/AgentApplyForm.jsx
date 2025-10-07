@@ -60,11 +60,14 @@ export default function AgentApplyForm() {
     try {
       values.userId = session?.user?._id;
 
-      const response = await fetch("http://localhost:5000/api/v1/agent", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
+      const response = await fetch(
+        "https://zentro-server.vercel.app/api/v1/agent",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+        }
+      );
 
       const data = await response.json();
 
