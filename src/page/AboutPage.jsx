@@ -13,7 +13,7 @@ const AboutPage = () => {
     <div>
       <PageHeading
         title="About Zentro Realty"
-        subtitle="At Zentro Realty, we’re passionate about helping people find their dream homes. With years of experience and a deep understanding of the real estate market, we provide trusted guidance and personalized services to make buying, selling, or renting a property seamless and stress-free."
+        subtitle="At Zentro Realty, we help people find their dream homes with trusted guidance and personalized services, making buying, selling, or renting seamless."
       ></PageHeading>
       <AboutHeading></AboutHeading>
       <WhatWeDo></WhatWeDo>
