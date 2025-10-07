@@ -49,7 +49,7 @@ export default function DashboardLayout({ children }) {
                                                     <BreadcrumbLink href="#">
                                                         <span className={`${pathSegments.length === index + 1 ? 'text-black' : ''}`}>
                                                             {
-                                                                path[0].toUpperCase() + path.slice(1,path.length)
+                                                                path[0].toUpperCase() + path.slice(1, path.length)
                                                             }
                                                         </span>
                                                     </BreadcrumbLink>
@@ -67,7 +67,9 @@ export default function DashboardLayout({ children }) {
 
                 {/* child contents  */}
                 <div className="pt-16">
-                    {children}
+                    <div className='p-4'>
+                        {children}
+                    </div>
                 </div>
             </SidebarInset>
         </SidebarProvider>
