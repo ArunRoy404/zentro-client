@@ -1,10 +1,11 @@
-import { DataTableTemplate } from '@/components/Dashboard/DataTableTemplate';
+import { DataTable } from '@/components/Dashboard/DataTable';
+import demoColumns from '@/components/Dashboard/Table/DemoColumns';
 import data from '@/dummyData/data.json'
 
 const AllUsers = () => {
     return (
         <div>
-            <DataTableTemplate data={data} />
+            <DataTable columns={demoColumns} data={data} />
         </div>
     );
 };
