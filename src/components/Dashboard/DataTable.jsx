@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import {
     closestCenter,
     DndContext,
@@ -65,34 +64,45 @@ import {
 
 import DraggableRow from "./Table/DraggableRow"
 import { Input } from "../ui/input"
+import SelectFilter from "./Table/SelectFilter"
+import { useId, useMemo, useState } from "react"
 
 
 
 
-export function DataTable({ columns, data: initialData, }) {
-    const [data, setData] = React.useState(() => initialData)
-    const [rowSelection, setRowSelection] = React.useState({})
+export function DataTable({ columns, data: initialData, dataFilter = [] }) {
+    const [data, setData] = useState(() => initialData)
+    const [rowSelection, setRowSelection] = useState({})
     const [columnVisibility, setColumnVisibility] =
-        React.useState({})
-    const [columnFilters, setColumnFilters] = React.useState(
+        useState({})
+    const [columnFilters, setColumnFilters] = useState(
         []
     )
-    const [sorting, setSorting] = React.useState([])
-    const [pagination, setPagination] = React.useState({
+    const [sorting, setSorting] = useState([])
+    const [pagination, setPagination] = useState({
         pageIndex: 0,
         pageSize: 10,
     })
-    const sortableId = React.useId()
+    const sortableId = useId()
     const sensors = useSensors(
         useSensor(MouseSensor, {}),
         useSensor(TouchSensor, {}),
         useSensor(KeyboardSensor, {})
     )
 
-    const dataIds = React.useMemo(
+    const dataIds = useMemo(
         () => data?.map(({ id }) => id) || [],
         [data]
     )
+
+
+
+    // filter state 
+    const [selectedFilter, setSelectedFilter] = useState(dataFilter[0])
+
+    const handleFilterChange = (value) => {
+        setSelectedFilter(value)
+    }
 
     const table = useReactTable({
         data,
@@ -137,15 +147,28 @@ export function DataTable({ columns, data: initialData, }) {
         >
             <div className="flex items-center justify-between ">
 
-                {/* search bar  */}
-                <Input
-                    placeholder="Filter emails..."
-                    value={(table.getColumn("email")?.getFilterValue()) ?? ""}
-                    onChange={(event) =>
-                        table.getColumn("email")?.setFilterValue(event.target.value)
+                {/* filter  */}
+                <div className="flex items-center gap-2">
+                    {
+                        !!dataFilter.length &&
+                        <>
+                            <Input
+                                placeholder={`Filter ${selectedFilter}...`}
+                                value={(table.getColumn(`${selectedFilter}`)?.getFilterValue()) ?? ""}
+                                onChange={(event) =>
+                                    table.getColumn(`${selectedFilter}`)?.setFilterValue(event.target.value)
+                                }
+                                className="max-w-xs rounded-none peer focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
+                            />
+
+                            <SelectFilter
+                                dataFilter={dataFilter}
+                                handleFilterChange={handleFilterChange}
+                                selectedFilter={selectedFilter}
+                            />
+                        </>
                     }
-                    className="max-w-xs rounded-none peer focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
-                />
+                </div>
 
 
 
