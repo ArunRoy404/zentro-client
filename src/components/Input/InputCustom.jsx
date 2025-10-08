@@ -38,6 +38,7 @@ const InputCustom = ({
                     {...field}
                     id={id}
                     readOnly={readOnly}
+                    disabled={readOnly}
                     className="peer rounded-none h-8 md:h-10 focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
                   />
 
@@ -57,11 +58,10 @@ const InputCustom = ({
                   <FormLabel
                     htmlFor={id}
                     className={`absolute left-3 transition-all text-[rgba(145,158,171,1)] px-1
-                                            ${
-                                              isActive
-                                                ? "top-0 -translate-y-1/2 text-[10px] bg-white"
-                                                : "top-1/2 text-xs md:text-base  -translate-y-1/2 peer-focus:top-0 peer-focus:text-xs peer-focus:bg-white"
-                                            }`}
+                                            ${isActive
+                        ? "top-0 -translate-y-1/2 text-[10px] bg-white"
+                        : "top-1/2 text-xs md:text-base  -translate-y-1/2 peer-focus:top-0 peer-focus:text-xs peer-focus:bg-white"
+                      }`}
                   >
                     {label}
                   </FormLabel>
@@ -115,17 +115,17 @@ const InputCustom = ({
                     {...field}
                     id={id}
                     readOnly={readOnly}
+                    disabled={readOnly}
                     className="rounded-none peer min-h-30 focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
                   />
                   {/* Label */}
                   <FormLabel
                     htmlFor={id}
                     className={`absolute left-3 duration-300 transition-all text-[rgba(145,158,171,1)] px-1
-                                            ${
-                                              isActive
-                                                ? "top-0 -translate-y-1/2 text-[10px] bg-white"
-                                                : "top-6 text-xs md:text-base -translate-y-1/2 peer-focus:top-0 peer-focus:text-xs peer-focus:bg-white"
-                                            }
+                                            ${isActive
+                        ? "top-0 -translate-y-1/2 text-[10px] bg-white"
+                        : "top-6 text-xs md:text-base -translate-y-1/2 peer-focus:top-0 peer-focus:text-xs peer-focus:bg-white"
+                      }
               `}
                   >
                     {label}
@@ -156,6 +156,7 @@ const InputCustom = ({
                   {...field}
                   id={id}
                   readOnly={readOnly}
+                  disabled={readOnly}
                   className="rounded-none peer h-8 md:h-10 focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
                 />
 
@@ -163,11 +164,10 @@ const InputCustom = ({
                 <FormLabel
                   htmlFor={id}
                   className={`absolute left-3 transition-all text-[rgba(145,158,171,1)] px-1
-                                            ${
-                                              isActive
-                                                ? "top-0 -translate-y-1/2 text-[10px] bg-white"
-                                                : "top-1/2 text-xs md:text-base -translate-y-1/2 peer-focus:top-0 peer-focus:text-xs peer-focus:bg-white"
-                                            }
+                                            ${isActive
+                      ? "top-0 -translate-y-1/2 text-[10px] bg-white"
+                      : "top-1/2 text-xs md:text-base -translate-y-1/2 peer-focus:top-0 peer-focus:text-xs peer-focus:bg-white"
+                    }
               `}
                 >
                   {label}
