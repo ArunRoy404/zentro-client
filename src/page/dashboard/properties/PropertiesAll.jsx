@@ -3,25 +3,23 @@
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 import { DataTable } from "@/components/Dashboard/DataTable"
-import usersColumns from "@/page/dashboard/users/usersColumns"
 import AlertTable from "@/components/Alert/AlertTable"
 import SkeletonTable from "@/components/Skeleton/SkeletonTable"
 import HeadingDashboard from "@/components/Dashboard/HeadingDashboard"
+import { propertiesColumns } from "@/page/dashboard/properties/propertiesColumns"
 
-
-
-const AllUsers = () => {
-    const dataFilter = ["name", "email", "address", "role"]
+const PropertiesAll = () => {
+    const dataFilter = ["title", "price", "status"]
     const {
-        data: users = [],
+        data: properties = [],
         isFetching,
         isError,
         error,
         refetch
     } = useQuery({
-        queryKey: ["all-users"],
+        queryKey: ["all-properties"],
         queryFn: async () => {
-            const res = await axios.get("https://zentro-server.vercel.app/api/v1/users")
+            const res = await axios.get("https://zentro-server.vercel.app/api/v1/property/get-all-property")
             return res.data?.data || []
         },
     })
@@ -29,21 +27,19 @@ const AllUsers = () => {
     return (
         <div>
             <HeadingDashboard
-                title="Users"
+                title="Properties"
                 refetch={refetch}
-                data={users}
+                data={properties}
             />
 
             {
                 isFetching
                     ? <SkeletonTable />
                     : isError
-                        ? <AlertTable message={error?.message} label={'User'} />
-                        : <DataTable columns={usersColumns} data={users} dataFilter={dataFilter} />
-
+                        ? <AlertTable message={error?.message} label={'Properties'} />
+                        : <DataTable columns={propertiesColumns} data={properties} dataFilter={dataFilter} />
             }
         </div>
     )
 }
-
-export default AllUsers
+export default PropertiesAll;

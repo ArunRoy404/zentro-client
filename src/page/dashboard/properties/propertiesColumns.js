@@ -1,9 +1,17 @@
-"use client"
-
 import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
+import DragHandle from "../../../components/Dashboard/Table/DragHandle"
+import Image from "next/image"
+import SortingColumn from "../../../components/Dashboard/Table/SortingColumn"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
-export const columns = [
+export const propertiesColumns = [
+  {
+    id: "drag",
+    header: () => null,
+    cell: ({ row }) => <DragHandle id={row.original.id} />,
+  },
   {
     id: "select",
     header: ({ table }) => (
@@ -36,7 +44,7 @@ export const columns = [
   },
   {
     accessorKey: "price",
-    header: "Price",
+    header: ({ column }) => <SortingColumn column={column}>Price</SortingColumn>,
     cell: ({ row }) => {
       const price = row.getValue("price")
       const formatted = new Intl.NumberFormat('en-BD', {
@@ -48,7 +56,7 @@ export const columns = [
   },
   {
     accessorKey: "propertyCategory",
-    header: "Category",
+    header: ({ column }) => <SortingColumn column={column}>Category</SortingColumn>,
     cell: ({ row }) => {
       const category = row.getValue("propertyCategory")
       return (
@@ -76,7 +84,7 @@ export const columns = [
   },
   {
     accessorKey: "propertyArea.value",
-    header: "Area",
+    header: ({ column }) => <SortingColumn column={column}>Area</SortingColumn>,
     cell: ({ row }) => {
       const area = row.original.propertyArea
       return (
@@ -88,7 +96,7 @@ export const columns = [
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: ({ column }) => <SortingColumn column={column}>Status</SortingColumn>,
     cell: ({ row }) => {
       const status = row.getValue("status")
       const getStatusVariant = (status) => {
@@ -103,9 +111,9 @@ export const columns = [
             return "outline"
         }
       }
-      
+
       return (
-        <Badge variant={getStatusVariant(status)} className="capitalize">
+        <Badge variant={getStatusVariant(status)} className={`capitalize ${status === 'available' ? 'bg-green-700' : ''}`}>
           {status}
         </Badge>
       )
@@ -113,18 +121,27 @@ export const columns = [
   },
   {
     accessorKey: "likes",
-    header: "Likes",
+    header: ({ column }) => <SortingColumn column={column}>Likes</SortingColumn>,
     cell: ({ row }) => {
       const likes = row.getValue("likes")
-      return <div className="text-center">{likes}</div>
+      return <div>{likes}</div>
     },
   },
   {
-    accessorKey: "createdAt",
-    header: "Created At",
+    header: "Actions",
     cell: ({ row }) => {
-      const date = new Date(row.getValue("createdAt"))
-      return <div>{date.toLocaleDateString()}</div>
+      const id = row.original._id
+      return (
+        <div className="space-x-2">
+          <Link href={`/properties/${id}`}>
+            <Button size={'sm'} variant={'outline'} >View</Button>
+          </Link>
+          <Link href={`/dashboard/properties/update/${id}`}>
+            <Button size={'sm'} >Edit</Button>
+          </Link>
+        </div>
+      );
     },
   },
+
 ]
