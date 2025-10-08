@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import Section from "@/components/Section/Section";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { useSession } from "next-auth/react";
+import AlertCustom from "@/components/Alert/AlertCustom";
 
 const formSchema = z.object({
   bio: z.string().min(20, "Bio must be at least 20 characters"),
@@ -118,7 +119,8 @@ export default function AgentApplyForm() {
               textarea
             />
 
-            <Message status={status} />
+            {/* alert  */}
+            <AlertCustom status={status} />
 
             <Button
               disabled={isLoading}

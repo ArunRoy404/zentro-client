@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 import AuthProvider from "@/provider/AuthProvider";
 import LenisScroll from "@/provider/LenisScroll";
 import NextThemeProvider from "@/provider/NextThemeProvider";
+import TanstackQueryProvider from "@/provider/TanstackQueryProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,12 +44,14 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          <NextThemeProvider>
-            <LenisScroll />
-            <Toaster />
-            <Navbar />
-            {children}
-          </NextThemeProvider>
+          <TanstackQueryProvider>
+            <NextThemeProvider>
+              <LenisScroll />
+              <Toaster />
+              <Navbar />
+              {children}
+            </NextThemeProvider>
+          </TanstackQueryProvider>
         </AuthProvider>
       </body>
     </html>
