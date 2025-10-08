@@ -6,7 +6,7 @@ import { DataTable } from "@/components/Dashboard/DataTable"
 import AlertTable from "@/components/Alert/AlertTable"
 import SkeletonTable from "@/components/Skeleton/SkeletonTable"
 import HeadingDashboard from "@/components/Dashboard/HeadingDashboard"
-import { propertiesColumns } from "@/page/dashboard/properties/propertiesColumns"
+import { propertiesColumns } from "@/page/dashboard/Properties/propertiesColumns"
 
 
 
