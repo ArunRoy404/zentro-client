@@ -2,7 +2,7 @@ import { Building2 } from "lucide-react";
 
 export default function AboutIntro() {
   return (
-    <div className="p-8 bg-background mb-16">
+    <div className="py-8 bg-background mb-16">
       <div className="flex items-center gap-2 mb-4">
         <Building2 className="w-7 h-7 text-secondary" />
         <h2 className="text-3xl font-semibold">Who We Are</h2>
