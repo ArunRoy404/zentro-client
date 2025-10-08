@@ -9,10 +9,10 @@ import InputCustom from "../Input/InputCustom";
 import Spinner from "../ui/Spinner";
 import { useState } from "react";
 import { toast } from "sonner";
-import Message from "../ui/Message";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { signIn } from 'next-auth/react'
+import AlertCustom from "../Alert/AlertCustom";
 
 
 
@@ -95,11 +95,11 @@ const SigninForm = () => {
                     </div>
 
                     {/* status message  */}
-                    <Message status={status} />
+                    <AlertCustom status={status} />
 
 
                     {/* Submit Button */}
-                    <Button disabled={isLoading} type="submit" className="mt-6 cursor-pointer w-full text-xs md:text-base font-bold leading-6  md:py-6">
+                    <Button disabled={isLoading} type="submit" className="mt-2 cursor-pointer w-full text-xs md:text-base font-bold leading-6  md:py-6">
                         {
                             isLoading
                                 ? <Spinner stroke="10" color="white" size="10" />

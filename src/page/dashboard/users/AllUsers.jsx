@@ -28,7 +28,7 @@ const AllUsers = () => {
         return <SkeletonTable />
     }
 
-    if (error) {
+    if (isError) {
         return <AlertTable message={error?.message} label={'User'} />
     }
 
