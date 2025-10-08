@@ -183,7 +183,7 @@ export function DataTable({ columns, data: initialData, dataFilter = [] }) {
                                 <IconChevronDown />
                             </Button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end" className="w-56">
+                        <DropdownMenuContent align="end" className="w-56 rounded-none">
                             {table
                                 .getAllColumns()
                                 .filter(

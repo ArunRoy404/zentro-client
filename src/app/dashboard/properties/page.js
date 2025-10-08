@@ -1,4 +1,4 @@
-import AllProperties from '@/page/dashboard/properties/Allproperties';
+import AllProperties from '@/page/dashboard/properties/AllProperties';
 import React from 'react';
 
 const page = () => <AllProperties></AllProperties>

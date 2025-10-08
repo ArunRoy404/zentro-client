@@ -36,7 +36,7 @@ const formSchema = z
 
 const RegisterForm = () => {
     const [isLoading, setIsLoading] = useState(false)
-    const [status, setStatus] = useState({ type: 'success', message: "Signin successful" })
+    const [status, setStatus] = useState(null)
     const router = useRouter();
 
     // form data 

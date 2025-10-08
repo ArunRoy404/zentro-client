@@ -3,9 +3,10 @@
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 import { DataTable } from "@/components/Dashboard/DataTable"
-import usersColumns from "@/components/Dashboard/users/usersColumns"
+import usersColumns from "@/page/dashboard/users/usersColumns"
 import AlertTable from "@/components/Alert/AlertTable"
 import SkeletonTable from "@/components/Skeleton/SkeletonTable"
+import HeadingDashboard from "@/components/Dashboard/HeadingDashboard"
 
 
 
@@ -13,9 +14,10 @@ const AllUsers = () => {
     const dataFilter = ["name", "email", "address", "role"]
     const {
         data: users = [],
-        isLoading,
+        isFetching,
         isError,
         error,
+        refetch
     } = useQuery({
         queryKey: ["all-users"],
         queryFn: async () => {
@@ -24,17 +26,22 @@ const AllUsers = () => {
         },
     })
 
-    if (isLoading) {
-        return <SkeletonTable />
-    }
-
-    if (isError) {
-        return <AlertTable message={error?.message} label={'User'} />
-    }
-
     return (
         <div>
-            <DataTable columns={usersColumns} data={users} dataFilter={dataFilter} />
+            <HeadingDashboard
+                title="Users"
+                refetch={refetch}
+                data={users}
+            />
+
+            {
+                isFetching
+                    ? <SkeletonTable />
+                    : isError
+                        ? <AlertTable message={error?.message} label={'User'} />
+                        : <DataTable columns={usersColumns} data={users} dataFilter={dataFilter} />
+
+            }
         </div>
     )
 }

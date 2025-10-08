@@ -1,30 +1,10 @@
-"use client"
-
-import * as React from "react"
-import { toast } from "sonner"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
-import DragHandle from "../Table/DragHandle"
+import DragHandle from "../../../components/Dashboard/Table/DragHandle"
 import Image from "next/image"
 import { BanDialog } from "./BanDialog"
 import SelectUserRole from "./SelectUserRole"
-import { ArrowUpDown } from "lucide-react"
-
-
-const SortingColumn = ({ column, children }) => {
-    return (
-        <Button
-            variant="ghost"
-            className='!p-0'
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-            {children}
-            <ArrowUpDown />
-        </Button>
-    )
-}
-
+import SortingColumn from "../../../components/Dashboard/Table/SortingColumn"
 
 
 const usersColumns = [
