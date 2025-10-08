@@ -6,6 +6,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
+.outlined-text {
+  color: transparent;
+  -webkit-text-stroke: 4px black;
+}
+
+
 :root {
   --primary: #1e1e1b;
   --secondary: #8c8c8c;
