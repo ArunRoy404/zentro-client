@@ -1,6 +1,4 @@
-import AllProperties from '@/page/dashboard/properties/AllProperties';
-import React from 'react';
+import AllProperties from "@/page/dashboard/properties/AllProperties";
 
-const page = () => <AllProperties></AllProperties>
-
+const page = () => <AllProperties/>
 export default page;
