@@ -26,11 +26,6 @@ const buttons = [
         link: "/profile",
         icon: User,
     },
-    {
-        label: "Settings",
-        link: "/settings",
-        icon: Settings,
-    },
 ]
 
 const AvatarUser = () => {
