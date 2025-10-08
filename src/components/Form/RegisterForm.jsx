@@ -9,8 +9,8 @@ import InputCustom from "../Input/InputCustom";
 import Spinner from "../ui/Spinner";
 import { useState } from "react";
 import { toast } from "sonner";
-import Message from "../ui/Message";
 import { useRouter } from "next/navigation";
+import AlertCustom from "../Alert/AlertCustom";
 
 
 
@@ -36,7 +36,7 @@ const formSchema = z
 
 const RegisterForm = () => {
     const [isLoading, setIsLoading] = useState(false)
-    const [status, setStatus] = useState(null)
+    const [status, setStatus] = useState({ type: 'success', message: "Signin successful" })
     const router = useRouter();
 
     // form data 
@@ -57,6 +57,7 @@ const RegisterForm = () => {
 
     const onSubmit = async (values) => {
         setIsLoading(true)
+        setStatus(null)
 
         // body 
         const requestOptions = {
@@ -120,7 +121,7 @@ const RegisterForm = () => {
                     </InputCustom>
 
                     {/* status message  */}
-                    <Message status={status} />
+                    <AlertCustom status={status}/>
 
                     {/* Submit Button */}
                     <Button disabled={isLoading} type="submit" className="mt-2 cursor-pointer w-full text-xs md:text-base font-bold leading-6  md:py-6">
