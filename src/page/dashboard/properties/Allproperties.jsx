@@ -8,9 +8,7 @@ import SkeletonTable from "@/components/Skeleton/SkeletonTable"
 import HeadingDashboard from "@/components/Dashboard/HeadingDashboard"
 import { propertiesColumns } from "@/page/dashboard/Properties/propertiesColumns"
 
-
-
-const AllProperties = () => {
+const Allproperties = () => {
   const dataFilter = ["title", "price", "status"]
   const {
     data: properties = [],
@@ -39,10 +37,10 @@ const AllProperties = () => {
           ? <SkeletonTable />
           : isError
             ? <AlertTable message={error?.message} label={'Properties'} />
-            : <DataTable columns={propertiesColumns} data={properties} dataFilter={dataFilter}/>
+            : <DataTable columns={propertiesColumns} data={properties} dataFilter={dataFilter} />
       }
     </div>
   )
 }
 
-export default AllProperties
+export default Allproperties;
