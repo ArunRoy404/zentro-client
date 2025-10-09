@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import ImageUpload from "@/components/ui/ImageUpload";
 import InputCustom from "@/components/Input/InputCustom";
 import axios from "axios";
+import AlertCustom from "@/components/Alert/AlertCustom";
 
 
 
@@ -48,6 +49,7 @@ export default function AddPropertyForm() {
     const [imageUrl, setImageUrl] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [imageError, setImageError] = useState(false);
+    const [status, setStatus] = useState(null)
 
     const form = useForm({
         resolver: zodResolver(propertySchema),
@@ -64,13 +66,18 @@ export default function AddPropertyForm() {
     });
 
     const onSubmit = async (data) => {
+
+        // check image uploaded 
         if (!imageUrl) {
             setImageError(true);
             toast.error("Upload Image");
             return;
         }
 
+        // reset states  
+        setStatus(null)
         setIsLoading(true);
+
 
         try {
             // Convert comma-separated features into an array
@@ -84,8 +91,6 @@ export default function AddPropertyForm() {
                 images: imageUrl,
             };
 
-            console.log("📝 Submitting Property:", payload);
-
             const res = await axios.post(
                 "https://zentro-server.vercel.app/api/v1/property/add-property",
                 payload
@@ -93,6 +98,7 @@ export default function AddPropertyForm() {
 
             if (res.data?.success) {
                 toast.success("Property added successfully!");
+                setStatus({ type: 'success', message: "Properties Added successfully" })
 
                 // reset values 
                 form.reset({
@@ -108,12 +114,13 @@ export default function AddPropertyForm() {
                 setImageUrl("");
             } else {
                 toast.error(res.data?.message || "Failed to add property.");
+                setStatus({ type: 'error', message: "Failed to add property." })
             }
         } catch (error) {
-            console.error("❌ Error adding property:", error);
             toast.error(
                 error.response?.data?.message || "Something went wrong while adding property."
             );
+            setStatus({ type: 'error', message: "Something went wrong" })
         } finally {
             setIsLoading(false);
         }
@@ -134,7 +141,7 @@ export default function AddPropertyForm() {
                                 {imageError && <span className="ml-4 text-red-400">(Upload Image)</span>}
                             </label>
                             <div className="w-full lg:w-[400px] h-[250px] lg:h-[220px]">
-                                <ImageUpload onUploadSuccess={setImageUrl} />
+                                <ImageUpload setImageUrl={setImageUrl} imageUrl={imageUrl} />
                             </div>
                         </div>
 
@@ -179,6 +186,10 @@ export default function AddPropertyForm() {
 
                     {/* Description */}
                     <InputCustom form={form} label="Description" id="description" textArea />
+
+
+                    {/* status message  */}
+                    <AlertCustom status={status} />
 
                     <Button type="submit" className="w-full mt-4" disabled={isLoading}>
                         {isLoading ? "Submitting..." : "Add Property"}

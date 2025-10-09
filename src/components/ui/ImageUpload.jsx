@@ -1,15 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Loader2, ImageIcon, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils"; // optional helper
 import { uploadImageToImageBB } from "@/lib/uploadImage";
 
-export default function ImageUpload({ onUploadSuccess }) {
+export default function ImageUpload({ imageUrl, setImageUrl }) {
     const [status, setStatus] = useState("idle"); // idle | uploading | success | error
-    const [imageUrl, setImageUrl] = useState("");
     const [error, setError] = useState("");
+
+    useEffect(() => {
+        if (!imageUrl) setStatus('idle')
+    }, [imageUrl])
 
     const handleImageChange = async (e) => {
         const file = e.target.files?.[0];
@@ -24,7 +27,6 @@ export default function ImageUpload({ onUploadSuccess }) {
             if (url) {
                 setImageUrl(url);
                 setStatus("success");
-                onUploadSuccess?.(url);
             } else {
                 throw new Error("Upload failed");
             }
