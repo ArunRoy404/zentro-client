@@ -74,7 +74,7 @@ export default function ImageUpload({ width = 200, height = 200, onUploadSuccess
           <img
             src={imageUrl}
             alt="Uploaded"
-            className="object-cover w-full h-full rounded-xl"
+            className="object-cover w-full h-full"
           />
         )}
 
