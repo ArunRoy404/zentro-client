@@ -9,12 +9,15 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import ImageUpload from "@/components/ui/ImageUpload";
 import InputCustom from "@/components/Input/InputCustom";
+import axios from "axios";
 
-// ✅ Zod validation schema
+
+
+// Zod validation schema
 const propertySchema = z.object({
     title: z.string().min(3, "Title is required"),
     description: z.string().min(10, "Description too short"),
-    propertyType: z.string().min(1, "Category required"),
+    propertyCategory: z.string().min(1, "Category required"),
     propertyFeatures: z.string().min(1, "Features required"),
     location: z.object({
         city: z.string().min(1, "City required"),
@@ -22,53 +25,100 @@ const propertySchema = z.object({
     }),
     status: z.string().min(1, "Status required"),
 
-    price: z
-        .union([z.number(), z.undefined()])
-        .refine((val) => val !== undefined, { message: "Price is required" })
-        .refine((val) => val > 0, { message: "Price must be positive" }),
 
+
+    price: z.preprocess(
+        (val) => (val === "" ? undefined : Number(val)),
+        z.number({ required_error: "Price is required" }).positive("Price must be positive")
+    ),
     propertyArea: z.object({
-        value: z
-            .union([z.number(), z.undefined()])
-            .refine((val) => val !== undefined, { message: "Area is required" })
-            .refine((val) => val > 0, { message: "Area must be positive" }),
+        value: z.preprocess(
+            (val) => (val === "" ? undefined : Number(val)),
+            z.number({ required_error: "Area is required" }).positive("Area must be positive")
+        ),
         unit: z.string().min(1, "Unit required"),
     }),
+
 });
+
+
+
 
 export default function AddPropertyForm() {
     const [imageUrl, setImageUrl] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [imageError, setImageError] = useState(false);
 
-
     const form = useForm({
         resolver: zodResolver(propertySchema),
         defaultValues: {
             title: "",
             description: "",
-            propertyType: "",
+            propertyCategory: "",
             propertyFeatures: "",
-            propertyArea: { value: undefined, unit: "sq ft" },
-            price: undefined,
+            propertyArea: { value: "", unit: "sq ft" },
+            price: "",
             location: { city: "", state: "" },
             status: "available",
         },
     });
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         if (!imageUrl) {
-            setImageError(true)
-            toast.error('Upload Image');
-            return
+            setImageError(true);
+            toast.error("Upload Image");
+            return;
         }
-        const payload = {
-            ...data,
-            images: imageUrl,
-        };
-        console.log("📝 Property Form Data:", payload);
-        toast.success("Form data logged in console!");
+
+        setIsLoading(true);
+
+        try {
+            // Convert comma-separated features into an array
+            const propertyFeatures = data.propertyFeatures
+                ? data.propertyFeatures.split(",").map((f) => f.trim())
+                : [];
+
+            const payload = {
+                ...data,
+                propertyFeatures,
+                images: imageUrl,
+            };
+
+            console.log("📝 Submitting Property:", payload);
+
+            const res = await axios.post(
+                "https://zentro-server.vercel.app/api/v1/property/add-property",
+                payload
+            );
+
+            if (res.data?.success) {
+                toast.success("Property added successfully!");
+
+                // reset values 
+                form.reset({
+                    title: "",
+                    description: "",
+                    propertyCategory: "",
+                    propertyFeatures: "",
+                    propertyArea: { value: "", unit: "sq ft" },
+                    price: "",
+                    location: { city: "", state: "" },
+                    status: "available",
+                });
+                setImageUrl("");
+            } else {
+                toast.error(res.data?.message || "Failed to add property.");
+            }
+        } catch (error) {
+            console.error("❌ Error adding property:", error);
+            toast.error(
+                error.response?.data?.message || "Something went wrong while adding property."
+            );
+        } finally {
+            setIsLoading(false);
+        }
     };
+
 
     return (
         <div className="w-full">
@@ -119,7 +169,7 @@ export default function AddPropertyForm() {
                     {/* Title */}
 
                     {/* Property Category */}
-                    <InputCustom form={form} label="Property Category" id="propertyType" />
+                    <InputCustom form={form} label="Property Category" id="propertyCategory" />
 
                     {/* Property Features */}
                     <InputCustom form={form} label="Property Features (comma separated)" id="propertyFeatures" />
