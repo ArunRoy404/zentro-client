@@ -7,6 +7,7 @@ import Spinner from "@/components/ui/Spinner";
 import ProfileHeader from "@/section/profile/ProfileHeader";
 import UserInfoCard from "@/section/profile/UserInfoCard";
 import AgentInfoCard from "@/section/profile/AgentInfoCard";
+import AlertCustom from "@/components/Alert/AlertCustom";
 
 export default function ProfilePage() {
   const { data: session } = useSession();
@@ -32,7 +33,13 @@ export default function ProfilePage() {
     );
 
   if (!data?.user)
-    return <p className="text-center py-20 text-red-500">User not found</p>;
+    return (
+      <div className="w-full flex justify-center">
+        <div className="py-20 w-50">
+          <AlertCustom status={{ type: 'error', message: "User Not Found" }} />
+        </div>;
+      </div>
+    )
 
   const { user, agent } = data;
 
