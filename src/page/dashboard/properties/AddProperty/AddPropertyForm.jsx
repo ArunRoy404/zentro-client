@@ -23,14 +23,14 @@ const propertySchema = z.object({
     status: z.string().min(1, "Status required"),
 
     price: z
-        .union([z.number(), z.null()])
-        .refine((val) => val !== null, { message: "Price is required" })
+        .union([z.number(), z.undefined()])
+        .refine((val) => val !== undefined, { message: "Price is required" })
         .refine((val) => val > 0, { message: "Price must be positive" }),
 
     propertyArea: z.object({
         value: z
-            .union([z.number(), z.null()])
-            .refine((val) => val !== null, { message: "Area is required" })
+            .union([z.number(), z.undefined()])
+            .refine((val) => val !== undefined, { message: "Area is required" })
             .refine((val) => val > 0, { message: "Area must be positive" }),
         unit: z.string().min(1, "Unit required"),
     }),
@@ -49,8 +49,8 @@ export default function AddPropertyForm() {
             description: "",
             propertyType: "",
             propertyFeatures: "",
-            propertyArea: { value: null, unit: "sq ft" },
-            price: null,
+            propertyArea: { value: undefined, unit: "sq ft" },
+            price: undefined,
             location: { city: "", state: "" },
             status: "available",
         },
@@ -106,7 +106,6 @@ export default function AddPropertyForm() {
                                     form={form}
                                     label="Unit"
                                     id="propertyArea.unit"
-                                    defaultValue="sq ft"
                                 />
                             </div>
 
@@ -126,7 +125,7 @@ export default function AddPropertyForm() {
                     <InputCustom form={form} label="Property Features (comma separated)" id="propertyFeatures" />
 
                     {/* Status */}
-                    <InputCustom form={form} label="Status" id="status" defaultValue="available" />
+                    <InputCustom form={form} label="Status" id="status" />
 
                     {/* Description */}
                     <InputCustom form={form} label="Description" id="description" textArea />
