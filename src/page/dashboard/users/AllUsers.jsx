@@ -23,6 +23,10 @@ const AllUsers = () => {
         queryFn: getAllUsers
     })
 
+    const handleUpdate = () => {
+        refetch()
+    }
+
     return (
         <div>
             <HeadingDashboard
@@ -36,7 +40,7 @@ const AllUsers = () => {
                     ? <SkeletonTable />
                     : isError
                         ? <AlertTable message={error?.message} label={'User'} />
-                        : <DataTable columns={usersColumns} data={users} dataFilter={dataFilter} />
+                        : <DataTable columns={usersColumns(handleUpdate)} data={users} dataFilter={dataFilter} />
 
             }
         </div>
