@@ -9,7 +9,7 @@ const RegistrationPage = () => {
             <div className=' max-w-[480px] mx-auto py-30 '>
                 <div>
                     {/* heading  */}
-                    <div className='space-y-2 text-center mb-10 md:mb-16 px-4'>
+                    <div className='space-y-2 text-center mb-10 px-4'>
                         <h1 className='text-[rgba(33,43,54,1)] font-bold text-2xl' >
                             Create your Account
                         </h1>

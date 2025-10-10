@@ -11,6 +11,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import AlertCustom from "../Alert/AlertCustom";
+import ImageUpload from "../ui/ImageUpload";
 
 
 
@@ -19,7 +20,7 @@ const formSchema = z
     .object({
         name: z.string().min(1, "First name is required"),
         email: z.string().email("Enter a valid email"),
-        photoUrl: z.string().url("Enter a valid photoURl"),
+        // photoUrl: z.string().url("Enter a valid photoURl"),
         phone: z.string().regex(/^01\d{9}$/, "Enter a valid phone number"),
         address: z.string().min(1, "Enter a valid address"),
         password: z.string().min(6, "Password must be at least 6 characters"),
@@ -35,6 +36,8 @@ const formSchema = z
 
 
 const RegisterForm = () => {
+    const [imageUrl, setImageUrl] = useState("");
+    const [imageError, setImageError] = useState(false);
     const [isLoading, setIsLoading] = useState(false)
     const [status, setStatus] = useState(null)
     const router = useRouter();
@@ -46,7 +49,7 @@ const RegisterForm = () => {
             name: "",
             email: "",
             password: "",
-            photoUrl: "",
+            // photoUrl: "",
             phone: "",
             address: "",
             confirmPassword: "",
@@ -56,6 +59,15 @@ const RegisterForm = () => {
 
 
     const onSubmit = async (values) => {
+
+        if (!imageUrl) {
+            setImageError(true);
+            toast.error("Upload Image");
+            return;
+        }
+        const userData = { ...values, photoUrl: imageUrl }
+
+
         setIsLoading(true)
         setStatus(null)
 
@@ -65,11 +77,11 @@ const RegisterForm = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(values),
+            body: JSON.stringify(userData),
             redirect: 'follow'
         };
 
-
+        
         try {
             const response = await fetch("https://zentro-server.vercel.app/api/v1/users/", requestOptions)
             const data = await response.json();
@@ -102,12 +114,18 @@ const RegisterForm = () => {
 
     return (
         <div>
+
+
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
 
+                    <div onClick={() => setImageError(false)} className={`w-30 h-30 mx-auto ${imageError ? 'border border-red-400 border-dashed' : ''} `}>
+                        <ImageUpload setImageUrl={setImageUrl} imageUrl={imageUrl} />
+                    </div>
+
                     {/* input fields */}
                     <InputCustom form={form} label={'Name'} id={'name'} />
-                    <InputCustom form={form} label={'Photo URL'} id={'photoUrl'} />
+                    {/* <InputCustom form={form} label={'Photo URL'} id={'photoUrl'} /> */}
                     <InputCustom form={form} label={'Phone'} id={'phone'} />
                     <InputCustom form={form} label={'Address'} id={'address'} />
                     <InputCustom form={form} label={'Email'} id={'email'} />
@@ -121,7 +139,7 @@ const RegisterForm = () => {
                     </InputCustom>
 
                     {/* status message  */}
-                    <AlertCustom status={status}/>
+                    <AlertCustom status={status} />
 
                     {/* Submit Button */}
                     <Button disabled={isLoading} type="submit" className="mt-2 cursor-pointer w-full text-xs md:text-base font-bold leading-6  md:py-6">
