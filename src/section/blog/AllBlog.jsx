@@ -10,9 +10,8 @@ export default function AllBlogs() {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["blogs"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/api/v1/blog/get-all-blog`);
-      console.log(res.data);
-      return res.data;
+      const res = await axiosSecure.get("/api/v1/blog/get-all-blog");
+      return res.data; // { success, count, blogs }
     },
   });
 
