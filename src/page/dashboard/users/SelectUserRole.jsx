@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import {
     Select,
     SelectContent,
@@ -20,24 +19,44 @@ import {
     AlertDialogCancel,
     AlertDialogAction,
 } from "@/components/ui/alert-dialog"
+import { useState } from "react"
+import { patchUser } from "@/api/userApi"
+import { toast } from "sonner"
 
-const SelectUserRole = ({ defaultValue, user }) => {
-    const [selectedRole, setSelectedRole] = React.useState(defaultValue)
-    const [openDialog, setOpenDialog] = React.useState(false)
+const SelectUserRole = ({ defaultValue, user, handleUpdate }) => {
+    const [selectedRole, setSelectedRole] = useState(defaultValue)
+    const [openDialog, setOpenDialog] = useState(false)
+    const [roleChoice, setRoleChoice] = useState(defaultValue)
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleChangeRole = (value) => {
-        setSelectedRole(value)
+        setRoleChoice(value)
         setOpenDialog(true) // show alert dialog on role change
     }
 
-    const handleConfirm = () => {
-        console.log(`Role changed for ${user.name} to ${selectedRole}`)
-        setOpenDialog(false)
+    const handleConfirm = async () => {
+        setIsLoading(false)
+        try {
+            // Patch user role to 'banned'
+            await patchUser({ role: roleChoice }, user._id);
+            toast(`User ${user.name} role changed.`);
+
+            setSelectedRole(roleChoice)
+
+            // refresh data 
+            // handleUpdate()
+
+        } catch (error) {
+            toast.error("Failed to change role. Try again.");
+        } finally {
+            setIsLoading(false)
+            setOpenDialog(false)
+        }
     }
 
     return (
         <>
-        {/* select  */}
+            {/* select  */}
             <Select
                 className="rounded-none"
                 value={selectedRole}
@@ -62,12 +81,14 @@ const SelectUserRole = ({ defaultValue, user }) => {
                     <AlertDialogHeader >
                         <AlertDialogTitle>Confirm Role Change</AlertDialogTitle>
                         <AlertDialogDescription>
-                            Are you sure you want to change {user.name}'s role to {selectedRole}?
+                            Are you sure you want to change {user.name}'s role to {roleChoice}?
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction onClick={handleConfirm}>Confirm</AlertDialogAction>
+                        <AlertDialogAction onClick={handleConfirm}>
+                            {isLoading ? <Spinner size={8} color={'white'} /> : 'Confirm'}
+                        </AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>

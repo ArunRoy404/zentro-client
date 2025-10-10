@@ -22,7 +22,7 @@ export function BanDialog({ user, handleUpdate }) {
         setIsLoading(true);
         try {
             // Patch user role to 'banned'
-            const res = await patchUser({ banned: !user?.banned }, user._id);
+            await patchUser({ banned: !user?.banned }, user._id);
 
             toast(`User ${user.name} has been banned.`);
 
@@ -35,8 +35,6 @@ export function BanDialog({ user, handleUpdate }) {
             setIsLoading(false);
         }
     };
-
-    console.log(user.banned);
 
     return (
         <AlertDialog>

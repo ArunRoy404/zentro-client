@@ -133,7 +133,7 @@ const usersColumns = (handleUpdate) => {
             cell: ({ row }) => {
                 const user = row?.original
                 return (
-                    <SelectUserRole defaultValue={user?.role} user={user} />
+                    <SelectUserRole handleUpdate={handleUpdate} defaultValue={user?.role} user={user} />
                 );
             },
         },
