@@ -1,5 +1,5 @@
-import BlogPageHome from "@/page/BlogPage";
+import BlogPage from "@/page/BlogPage";
 
 export default function Page() {
-  return <BlogPageHome />;
+  return <BlogPage />;
 }
