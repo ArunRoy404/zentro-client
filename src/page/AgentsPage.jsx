@@ -7,13 +7,13 @@ import React from "react";
 
 const AgentsPage = () => {
   return (
-    <div>
+    <main className="pt-16 md:pt-17">
       <AgentsHeading></AgentsHeading>
       <WhyApplySection></WhyApplySection>
       <ApplyRequirementsSection></ApplyRequirementsSection>
       <AgentBenefitsSection></AgentBenefitsSection>
       <AgentCTASection></AgentCTASection>
-    </div>
+    </main>
   );
 };
 

@@ -4,13 +4,13 @@ import React from "react";
 
 const AgentApplyPage = () => {
   return (
-    <div>
+    <main className="pt-16 md:pt-17">
       <PageHeading
         title="Apply to Become a Zentro Agent"
         subtitle="Fill out the form below to start your journey as a verified agent on Zentro. Once approved, you’ll gain access to exclusive listings, client tools, and commissions."
       ></PageHeading>
       <AgentApplyForm></AgentApplyForm>
-    </div>
+    </main>
   );
 };
 

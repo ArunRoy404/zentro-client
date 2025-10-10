@@ -10,7 +10,7 @@ import React from "react";
 
 const AboutPage = () => {
   return (
-    <div>
+    <main className="pt-16 md:pt-17">
       <PageHeading
         title="About Zentro Realty"
         subtitle="At Zentro Realty, we help people find their dream homes with trusted guidance and personalized services, making buying, selling, or renting seamless."
@@ -22,7 +22,7 @@ const AboutPage = () => {
       <StatsSection></StatsSection>
       <AboutCTA></AboutCTA>
       <CoreValues></CoreValues>
-    </div>
+    </main>
   );
 };
 

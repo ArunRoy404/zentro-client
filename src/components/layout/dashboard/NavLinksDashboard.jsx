@@ -11,12 +11,14 @@ import {
     Users,
     Info,
     Phone,
+    BookImage,
 } from "lucide-react"
 
 const navLinks = [
     { name: "Home", url: "/", icon: Home },
     { name: "Properties", url: "/properties", icon: Building2 },
     { name: "Agents", url: "/agents", icon: Users },
+    { name: "Blogs", url: "/blog", icon: BookImage },
     { name: "About Us", url: "/about", icon: Info },
     { name: "Contact", url: "/contact", icon: Phone },
 ]

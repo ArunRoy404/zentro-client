@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Section from "@/components/Section/Section";
-import Spinner from "@/components/ui/Spinner";
 import ProfileHeader from "@/section/profile/ProfileHeader";
 import UserInfoCard from "@/section/profile/UserInfoCard";
 import AgentInfoCard from "@/section/profile/AgentInfoCard";
 import AlertCustom from "@/components/Alert/AlertCustom";
+import LoadingPage from "./LoadingPage";
 
 export default function ProfilePage() {
   const { data: session } = useSession();
@@ -25,12 +25,7 @@ export default function ProfilePage() {
     }
   }, [session]);
 
-  if (loading)
-    return (
-      <div className="flex justify-center py-20">
-        <Spinner size={12} />
-      </div>
-    );
+  if (loading) return <LoadingPage />
 
   if (!data?.user)
     return (
@@ -44,12 +39,14 @@ export default function ProfilePage() {
   const { user, agent } = data;
 
   return (
-    <Section>
-      <ProfileHeader user={user} />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-        <UserInfoCard user={user} />
-        {agent && <AgentInfoCard agent={agent} />}
-      </div>
-    </Section>
+    <main className="pt-16 md:pt-17">
+      <Section>
+        <ProfileHeader user={user} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          <UserInfoCard user={user} />
+          {agent && <AgentInfoCard agent={agent} />}
+        </div>
+      </Section>
+    </main>
   );
 }

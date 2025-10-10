@@ -29,12 +29,32 @@ import {
     SidebarMenuItem,
     useSidebar,
 } from "@/components/ui/sidebar"
-import { useSession } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
+import Link from "next/link"
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { toast } from "sonner"
+import Spinner from "@/components/ui/Spinner"
 
 export function NavUser() {
     const { isMobile } = useSidebar()
     const session = useSession()
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleSignout = async (e) => {
+        setIsLoading(true)
+        try {
+            await signOut({ redirect: false })
+            toast.success("Signout successful")
+        } catch {
+            toast.error("Signout unsuccessful")
+        } finally {
+            setIsLoading(false)
+        }
+    }
     const user = session?.data?.user
+
+
 
     return (
         <SidebarMenu>
@@ -85,7 +105,7 @@ export function NavUser() {
                         <DropdownMenuGroup>
                             <DropdownMenuItem>
                                 <BadgeCheck />
-                                Account
+                                <Link href='/profile' className="w-full">Profile</Link>
                             </DropdownMenuItem>
                             <DropdownMenuItem>
                                 <CreditCard />
@@ -99,7 +119,13 @@ export function NavUser() {
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>
                             <LogOut />
-                            Log out
+                            <div className="w-full" onClick={handleSignout}>
+                                {
+                                    isLoading
+                                        ? <span className="ml-4"> <Spinner size='8' /></span>
+                                        : 'Sign out'
+                                }
+                            </div>
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
