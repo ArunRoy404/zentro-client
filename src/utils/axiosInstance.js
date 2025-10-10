@@ -30,6 +30,11 @@ axiosSecure.interceptors.response.use(
             toast.error("Session expired. Logging out...")
             await signOut({ callbackUrl: "/signin" });
         }
+        else if (error.response?.status === 403) {
+            // Token expired or invalid
+            toast.error("Unauthorized Action. Logging out...")
+            await signOut({ callbackUrl: "/signin" });
+        }
         return Promise.reject(error);
     }
 );
