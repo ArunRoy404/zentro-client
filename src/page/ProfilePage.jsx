@@ -39,7 +39,7 @@ export default function ProfilePage() {
   const { user, agent } = data;
 
   return (
-    <main className="pt-16 md:pt-17">
+    <main>
       <Section>
         <ProfileHeader user={user} />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
