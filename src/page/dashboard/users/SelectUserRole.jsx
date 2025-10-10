@@ -44,7 +44,7 @@ const SelectUserRole = ({ defaultValue, user, handleUpdate }) => {
             setSelectedRole(roleChoice)
 
             // refresh data 
-            // handleUpdate()
+            handleUpdate()
 
         } catch (error) {
             toast.error("Failed to change role. Try again.");
