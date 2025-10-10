@@ -4,7 +4,7 @@ import CTA from "@/section/contact/CTA";
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pt-16 md:pt-17">
       {/* Hero Section */}
       <PageHeading
         title="Get in Touch With Us"

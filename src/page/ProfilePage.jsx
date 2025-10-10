@@ -39,12 +39,14 @@ export default function ProfilePage() {
   const { user, agent } = data;
 
   return (
-    <Section>
-      <ProfileHeader user={user} />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-        <UserInfoCard user={user} />
-        {agent && <AgentInfoCard agent={agent} />}
-      </div>
-    </Section>
+    <main className="pt-16 md:pt-17">
+      <Section>
+        <ProfileHeader user={user} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          <UserInfoCard user={user} />
+          {agent && <AgentInfoCard agent={agent} />}
+        </div>
+      </Section>
+    </main>
   );
 }
