@@ -6,7 +6,7 @@ import usersColumns from "@/page/dashboard/users/usersColumns"
 import AlertTable from "@/components/Alert/AlertTable"
 import SkeletonTable from "@/components/Skeleton/SkeletonTable"
 import HeadingDashboard from "@/components/Dashboard/HeadingDashboard"
-import axiosSecure from "@/utils/axiosInstance"
+import { getAllUsers } from "@/api/userApi"
 
 
 
@@ -20,10 +20,7 @@ const AllUsers = () => {
         refetch
     } = useQuery({
         queryKey: ["all-users"],
-        queryFn: async () => {
-            const res = await axiosSecure.get("/api/v1/users")
-            return res.data?.data || []
-        },
+        queryFn: getAllUsers
     })
 
     return (
