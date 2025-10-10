@@ -1,3 +1,4 @@
+import AddPropertyForm from "./AddProperty/AddPropertyForm";
 
 const AddProperty = () => {
     return (
@@ -15,14 +16,7 @@ const AddProperty = () => {
                 </div>
             </div>
 
-
-
-            
-
-
-
-
-
+            <AddPropertyForm />
         </div>
     );
 };

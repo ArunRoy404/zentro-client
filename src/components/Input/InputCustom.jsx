@@ -19,6 +19,7 @@ const InputCustom = ({
   children,
   textArea,
   readOnly = false,
+  type
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -145,7 +146,7 @@ const InputCustom = ({
       control={form.control}
       name={id}
       render={({ field }) => {
-        const isActive = field.value && field.value.length > 0;
+        const isActive = field.value && (field.value.length > 0 || field.value > 0);
 
         return (
           <FormItem className="relative w-full">
@@ -154,9 +155,14 @@ const InputCustom = ({
                 {/* Input */}
                 <Input
                   {...field}
+                  type={type}
                   id={id}
                   readOnly={readOnly}
                   disabled={readOnly}
+                  onChange={(e) => {
+                    const value = type === "number" ? Number(e.target.value) : e.target.value;
+                    field.onChange(value);
+                  }}
                   className="rounded-none peer h-8 md:h-10 focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
                 />
 
