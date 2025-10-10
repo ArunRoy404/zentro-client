@@ -7,7 +7,7 @@ import Testimonials from '@/section/Home/Testimonials';
 
 const HomePage = () => {
     return (
-        <main className='pt-16 md:pt-17'>
+        <main>
             <Hero />
             <FeaturedProperties/>
             <Categories/>

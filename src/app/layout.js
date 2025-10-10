@@ -49,7 +49,9 @@ export default function RootLayout({ children }) {
               <LenisScroll />
               <Toaster />
               <Navbar />
-              {children}
+              <div className="pt-16 md:pt-17">
+                {children}
+              </div>
             </NextThemeProvider>
           </TanstackQueryProvider>
         </AuthProvider>
