@@ -11,6 +11,7 @@ import ImageUpload from "@/components/ui/ImageUpload";
 import InputCustom from "@/components/Input/InputCustom";
 import axios from "axios";
 import AlertCustom from "@/components/Alert/AlertCustom";
+import { useSession } from "next-auth/react";
 
 
 
@@ -39,7 +40,6 @@ const propertySchema = z.object({
         ),
         unit: z.string().min(1, "Unit required"),
     }),
-
 });
 
 
@@ -50,6 +50,8 @@ export default function AddPropertyForm() {
     const [isLoading, setIsLoading] = useState(false);
     const [imageError, setImageError] = useState(false);
     const [status, setStatus] = useState(null)
+    const { data } = useSession()
+
 
     const form = useForm({
         resolver: zodResolver(propertySchema),
@@ -88,6 +90,7 @@ export default function AddPropertyForm() {
             const payload = {
                 ...data,
                 propertyFeatures,
+                addedBy: data.user._id,
                 images: imageUrl,
             };
 
