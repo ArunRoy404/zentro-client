@@ -13,6 +13,12 @@ import Spinner from "../ui/Spinner";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 const PaymentFormInner = () => {
+
+    console.log("Stripe key:", process.env.NEXT_PUBLIC_STRIPE_KEY);
+
+
+
+
     const stripe = useStripe();
     const elements = useElements();
 
