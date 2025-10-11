@@ -1,12 +1,12 @@
 "use client"
 
 import { useQuery } from "@tanstack/react-query"
-import axios from "axios"
 import { DataTable } from "@/components/Dashboard/DataTable"
 import AlertTable from "@/components/Alert/AlertTable"
 import SkeletonTable from "@/components/Skeleton/SkeletonTable"
 import HeadingDashboard from "@/components/Dashboard/HeadingDashboard"
 import { propertiesColumns } from "@/page/dashboard/properties/propertiesColumns"
+import axiosSecure from "@/api/axiosInstance"
 
 const PropertiesAll = () => {
     const dataFilter = ["title", "price", "status"]
@@ -19,7 +19,7 @@ const PropertiesAll = () => {
     } = useQuery({
         queryKey: ["all-properties"],
         queryFn: async () => {
-            const res = await axios.get("https://zentro-server.vercel.app/api/v1/property/get-all-property")
+            const res = await axiosSecure.get("https://zentro-server.vercel.app/api/v1/property/get-dashboard-property")
             return res.data?.data || []
         },
     })

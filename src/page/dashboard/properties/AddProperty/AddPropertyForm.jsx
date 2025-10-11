@@ -11,6 +11,8 @@ import ImageUpload from "@/components/ui/ImageUpload";
 import InputCustom from "@/components/Input/InputCustom";
 import axios from "axios";
 import AlertCustom from "@/components/Alert/AlertCustom";
+import { useSession } from "next-auth/react";
+import axiosSecure from "@/api/axiosInstance";
 
 
 
@@ -39,7 +41,6 @@ const propertySchema = z.object({
         ),
         unit: z.string().min(1, "Unit required"),
     }),
-
 });
 
 
@@ -50,6 +51,8 @@ export default function AddPropertyForm() {
     const [isLoading, setIsLoading] = useState(false);
     const [imageError, setImageError] = useState(false);
     const [status, setStatus] = useState(null)
+    const session = useSession()
+
 
     const form = useForm({
         resolver: zodResolver(propertySchema),
@@ -88,10 +91,11 @@ export default function AddPropertyForm() {
             const payload = {
                 ...data,
                 propertyFeatures,
+                addedBy: session.data.user.email,
                 images: imageUrl,
             };
 
-            const res = await axios.post(
+            const res = await axiosSecure.post(
                 "https://zentro-server.vercel.app/api/v1/property/add-property",
                 payload
             );

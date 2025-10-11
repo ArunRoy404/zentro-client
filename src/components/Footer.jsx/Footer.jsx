@@ -1,8 +1,24 @@
+'use client'
+
 import React from "react";
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (
+    pathname.includes("/dashboard") ||
+    pathname.includes("/signin") ||
+    pathname.includes("/registration")
+  ) {
+    return <></>;
+  }
+
+
+
   const year = new Date().getFullYear();
 
   return (
