@@ -50,7 +50,7 @@ export default function AddPropertyForm() {
     const [isLoading, setIsLoading] = useState(false);
     const [imageError, setImageError] = useState(false);
     const [status, setStatus] = useState(null)
-    const { data } = useSession()
+    const session = useSession()
 
 
     const form = useForm({
@@ -90,7 +90,7 @@ export default function AddPropertyForm() {
             const payload = {
                 ...data,
                 propertyFeatures,
-                addedBy: data.user._id,
+                addedBy: session.data.user.email,
                 images: imageUrl,
             };
 
