@@ -11,7 +11,7 @@ import agentsColumns from "./agentsColumns"
 
 
 const AllAgents = () => {
-    const dataFilter = ["name", "email", "address", "role"]
+    const dataFilter = ["name", "email", "bio", "licenseNo", "totalSales", "officeAddress" ]
     const {
         data: agents = [],
         isFetching,
@@ -23,6 +23,8 @@ const AllAgents = () => {
         queryFn: getAllAgents
     })
 
+    const approvedAgents = agents?.filter(agent => agent.status === "approved") || [];
+
     const handleUpdate = () => {
         refetch()
     }
@@ -32,7 +34,7 @@ const AllAgents = () => {
             <HeadingDashboard
                 title="Agents"
                 refetch={refetch}
-                data={agents}
+                data={approvedAgents}
             />
 
             {
@@ -40,17 +42,9 @@ const AllAgents = () => {
                     ? <SkeletonTable />
                     : isError
                         ? <AlertTable message={error?.message} label={'Agent'} />
-                        : <DataTable columns={agentsColumns(handleUpdate)} data={agents} />
+                        : <DataTable columns={agentsColumns(handleUpdate)} data={approvedAgents} dataFilter={dataFilter} />
 
             }
-            {/* {
-                isFetching
-                    ? <SkeletonTable />
-                    : isError
-                        ? <AlertTable message={error?.message} label={'User'} />
-                        : <DataTable columns={usersColumns(handleUpdate)} data={users} dataFilter={dataFilter} />
-
-            } */}
         </div>
     )
 }
