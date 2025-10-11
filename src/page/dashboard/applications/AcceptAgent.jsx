@@ -19,21 +19,22 @@ export function AcceptAgent({ agent, handleUpdate }) {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleBan = async () => {
-        // setIsLoading(true);
-        // try {
-        //     // Patch user role to 'banned'
-        //     await patchUser({ banned: !agent?.banned }, agent._id);
+        setIsLoading(true);
+        try {
+            // Patch user role to 'banned'
+            // await patchUser({ banned: !agent?.banned }, agent._id);
 
-        //     toast(`User ${agent.name} has been banned.`);
 
-        //     // refresh data 
-        //     handleUpdate()
 
-        // } catch (error) {
-        //     toast.error("Failed to ban user. Try again.");
-        // } finally {
-        //     setIsLoading(false);
-        // }
+            toast(`User ${agent.name} has been promoted to Agent.`);
+            // refresh data 
+            handleUpdate()
+
+        } catch (error) {
+            toast.error("Failed to Accept application. Try again.");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
