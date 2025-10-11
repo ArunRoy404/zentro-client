@@ -12,6 +12,7 @@ import InputCustom from "@/components/Input/InputCustom";
 import axios from "axios";
 import AlertCustom from "@/components/Alert/AlertCustom";
 import { useSession } from "next-auth/react";
+import axiosSecure from "@/api/axiosInstance";
 
 
 
@@ -94,7 +95,7 @@ export default function AddPropertyForm() {
                 images: imageUrl,
             };
 
-            const res = await axios.post(
+            const res = await axiosSecure.post(
                 "https://zentro-server.vercel.app/api/v1/property/add-property",
                 payload
             );
