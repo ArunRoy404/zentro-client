@@ -10,15 +10,8 @@ import { CreditCardIcon } from "lucide-react";
 import { toast } from "sonner";
 import Spinner from "../ui/Spinner";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 const PaymentFormInner = () => {
-
-    console.log("Stripe key:", process.env.NEXT_PUBLIC_STRIPE_KEY);
-
-
-
-
     const stripe = useStripe();
     const elements = useElements();
 
@@ -125,12 +118,16 @@ const PaymentFormInner = () => {
     );
 };
 
-const PaymentForm = () => (
-    <div className="max-w-md mx-auto p-6">
-        <Elements stripe={stripePromise}>
-            <PaymentFormInner />
-        </Elements>
-    </div>
-);
+const PaymentForm = () => {
+    const stripeKey = process.env.NEXT_PUBLIC_STRIPE_KEY
+    const stripePromise = loadStripe(stripeKey);
+    return (
+        <div className="max-w-md mx-auto p-6">
+            <Elements stripe={stripePromise}>
+                <PaymentFormInner />
+            </Elements>
+        </div>
+    );
+}
 
 export default PaymentForm;
