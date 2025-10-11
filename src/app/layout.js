@@ -7,6 +7,7 @@ import AuthProvider from "@/provider/AuthProvider";
 import LenisScroll from "@/provider/LenisScroll";
 import NextThemeProvider from "@/provider/NextThemeProvider";
 import TanstackQueryProvider from "@/provider/TanstackQueryProvider";
+import Footer from "../components/Footer.jsx/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,6 +51,7 @@ export default function RootLayout({ children }) {
               <Toaster />
               <Navbar />
               {children}
+              <Footer />
             </NextThemeProvider>
           </TanstackQueryProvider>
         </AuthProvider>
