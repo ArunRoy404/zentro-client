@@ -7,7 +7,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-shad bg-background text-primary">
-      <div className="max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4">
+      <div className="container mx-auto px-6 py-16 grid gap-10 md:grid-cols-4">
         {/* Brand */}
         <div>
           <h2 className="text-2xl font-bold text-primary">Zentro</h2>

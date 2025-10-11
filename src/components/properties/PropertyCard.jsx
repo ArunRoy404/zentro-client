@@ -33,7 +33,7 @@ const PropertyCard = ({ property }) => {
 
                 {/* Property Type + Area with icon */}
                 <p className="flex items-center text-sm text-gray-600 gap-1 capitalize">
-                    {property.propertyType} · <Ruler className="w-4 h-4 text-gray-400" />{" "}
+                    {property.propertyCategory} · <Ruler className="w-4 h-4 text-gray-400" />{" "}
                     {property.propertyArea.value} {property.propertyArea.unit}
                 </p>
             </div>

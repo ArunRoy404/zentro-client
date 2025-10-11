@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import FilterSidebar from "./FilterSidebar";
 import DataFetch from "./DataFetch";
-import PropertyCard from "./PropertyCard";
+import PropertyCard from "@/components/properties/PropertyCard";
 
 export default function PropertiesSection() {
   const [search, setSearch] = useState("");
@@ -39,7 +39,7 @@ export default function PropertiesSection() {
             );
 
           return (
-            <section className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <section className="grid gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {filtered.map((property) => (
                 <PropertyCard key={property._id} property={property} />
               ))}
