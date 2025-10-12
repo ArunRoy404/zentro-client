@@ -1,0 +1,27 @@
+import React from "react";
+import { Button } from "../ui/button";
+import { useTheme } from "next-themes";
+import { Moon, Sun } from "lucide-react";
+
+const ThemeToggle = () => {
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <div>
+      <Button
+        variant="ghost"
+        size="icon"
+        className={"rounded-full"}
+        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      >
+        {theme === "dark" ? (
+          <Sun className="h-[1.2rem] w-[1.2rem]" />
+        ) : (
+          <Moon className="h-[1.2rem] w-[1.2rem]" />
+        )}
+      </Button>
+    </div>
+  );
+};
+
+export default ThemeToggle;

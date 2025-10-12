@@ -1,0 +1,191 @@
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
+import { Textarea } from "../ui/textarea";
+
+const InputCustom = ({
+  form,
+  label,
+  id,
+  checkBox,
+  children,
+  textArea,
+  readOnly = false,
+  type
+}) => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  if (id.includes("password") || id.includes("confirmPassword")) {
+    return (
+      <FormField
+        control={form.control}
+        name={id}
+        render={({ field }) => {
+          const isActive = field.value && field.value.length > 0;
+          return (
+            <FormItem className="relative">
+              <FormControl>
+                <div className="relative">
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    {...field}
+                    id={id}
+                    readOnly={readOnly}
+                    disabled={readOnly}
+                    className="peer rounded-none h-8 md:h-10 focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                    className="absolute cursor-pointer right-3 top-1/2 -translate-y-1/2 text-gray-500"
+                  >
+                    {showPassword ? (
+                      <EyeOff className="w-5 h-5" />
+                    ) : (
+                      <Eye className="w-5 h-5" />
+                    )}
+                  </button>
+
+                  {/* Label */}
+                  <FormLabel
+                    htmlFor={id}
+                    className={`absolute left-3 transition-all text-[rgba(145,158,171,1)] px-1
+                                            ${isActive
+                        ? "top-0 -translate-y-1/2 text-[10px] bg-white"
+                        : "top-1/2 text-xs md:text-base  -translate-y-1/2 peer-focus:top-0 peer-focus:text-xs peer-focus:bg-white"
+                      }`}
+                  >
+                    {label}
+                  </FormLabel>
+                </div>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          );
+        }}
+      />
+    );
+  }
+
+  if (checkBox) {
+    return (
+      <FormField
+        control={form.control}
+        name={id}
+        render={({ field }) => (
+          <FormItem className="flex items-center space-x-2">
+            <FormControl>
+              <Checkbox
+                checked={field.value}
+                onCheckedChange={field.onChange}
+              />
+            </FormControl>
+            <FormLabel className="text-xs md:text-sm text-[rgba(33,43,54,1)] font-normal">
+              {children}
+            </FormLabel>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+    );
+  }
+
+  if (textArea) {
+    return (
+      <FormField
+        control={form.control}
+        name={id}
+        render={({ field }) => {
+          const isActive = field.value && field.value.length > 0;
+
+          return (
+            <FormItem className="relative w-full">
+              <FormControl>
+                <div className="relative">
+                  {/* Input */}
+                  <Textarea
+                    {...field}
+                    id={id}
+                    readOnly={readOnly}
+                    disabled={readOnly}
+                    className="rounded-none peer min-h-30 focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
+                  />
+                  {/* Label */}
+                  <FormLabel
+                    htmlFor={id}
+                    className={`absolute left-3 duration-300 transition-all text-[rgba(145,158,171,1)] px-1
+                                            ${isActive
+                        ? "top-0 -translate-y-1/2 text-[10px] bg-white"
+                        : "top-6 text-xs md:text-base -translate-y-1/2 peer-focus:top-0 peer-focus:text-xs peer-focus:bg-white"
+                      }
+              `}
+                  >
+                    {label}
+                  </FormLabel>
+                </div>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          );
+        }}
+      />
+    );
+  }
+
+  return (
+    <FormField
+      control={form.control}
+      name={id}
+      render={({ field }) => {
+        const isActive = field.value && (field.value.length > 0 || field.value > 0);
+
+        return (
+          <FormItem className="relative w-full">
+            <FormControl>
+              <div className="relative">
+                {/* Input */}
+                <Input
+                  {...field}
+                  type={type}
+                  id={id}
+                  readOnly={readOnly}
+                  disabled={readOnly}
+                  onChange={(e) => {
+                    const value = type === "number" ? Number(e.target.value) : e.target.value;
+                    field.onChange(value);
+                  }}
+                  className="rounded-none peer h-8 md:h-10 focus:outline-none focus:border-none text-[rgba(33,43,54,1)] text-xs md:text-base font-normal"
+                />
+
+                {/* Label */}
+                <FormLabel
+                  htmlFor={id}
+                  className={`absolute left-3 transition-all text-[rgba(145,158,171,1)] px-1
+                                            ${isActive
+                      ? "top-0 -translate-y-1/2 text-[10px] bg-white"
+                      : "top-1/2 text-xs md:text-base -translate-y-1/2 peer-focus:top-0 peer-focus:text-xs peer-focus:bg-white"
+                    }
+              `}
+                >
+                  {label}
+                </FormLabel>
+              </div>
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        );
+      }}
+    />
+  );
+};
+
+export default InputCustom;
