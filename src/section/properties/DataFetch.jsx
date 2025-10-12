@@ -15,7 +15,7 @@ export default function DataFetch({
     queryKey: ["properties"],
     queryFn: async () => {
       const res = await axios.get(
-        "http://localhost:5000/api/v1/property/get-all-property"
+        "https://zentro-server.vercel.app/api/v1/property/get-all-property"
       );
       return res.data.data;
     },

@@ -21,7 +21,7 @@ export default function PropertyDetails() {
     const fetchProperty = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/v1/property/get-single-property/${id}`
+          `https://zentro-server.vercel.app/api/v1/property/get-single-property/${id}`
         );
         const data = await res.json();
         if (data.success) setPropertyData(data.data);
