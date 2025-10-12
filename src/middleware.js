@@ -7,13 +7,14 @@ export async function middleware(req) {
     const isLoggedIn = Boolean(token);
     const { pathname } = req.nextUrl;
 
-    // Define protected paths
+    // 🔒 Protected paths for all unauthenticated users
     const protectedPaths = [
         /^\/properties\/[^/]+$/, // /properties/:id
         "/agents/apply-agent",
         "/dashboard",
         "/dashboard/agents",
         "/dashboard/users",
+        "/profile", // ✅ Added profile protection
     ];
 
     // Check if path is protected
@@ -21,7 +22,7 @@ export async function middleware(req) {
         typeof route === "string" ? pathname.startsWith(route) : route.test(pathname)
     );
 
-    // 1 If user not logged in and tries to access protected routes → redirect to signin
+    // 1️⃣ Not logged in → redirect to signin
     if (isProtected && !isLoggedIn) {
         const callbackUrl = encodeURIComponent(req.nextUrl.href);
         return NextResponse.redirect(
@@ -29,7 +30,7 @@ export async function middleware(req) {
         );
     }
 
-    //  Authenticated but restricted by role
+    // 2️⃣ Role-based access restrictions
     if (pathname.startsWith("/dashboard") && role === "customer") {
         return NextResponse.redirect(new URL("/unauthorized", req.url));
     }
@@ -42,12 +43,12 @@ export async function middleware(req) {
         return NextResponse.redirect(new URL("/unauthorized", req.url));
     }
 
-    // Logged-in users shouldn’t visit signin
+    // 3️⃣ Signed-in users shouldn't visit signin page
     if (pathname.startsWith("/signin") && isLoggedIn) {
         return NextResponse.redirect(new URL("/", req.url));
     }
 
-    // Otherwise, allow access
+    // ✅ Otherwise, allow
     return NextResponse.next();
 }
 
@@ -56,6 +57,7 @@ export const config = {
         "/properties/:path*",
         "/agents/:path*",
         "/dashboard/:path*",
+        "/profile",
         "/signin",
     ],
 };
