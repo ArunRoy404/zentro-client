@@ -48,7 +48,6 @@ export default function AddToCartButton({ propertyId }) {
     <Button
       disabled={loading}
       variant="default"
-      className="flex-1 flex items-center justify-center gap-2 rounded-none"
       onClick={handleAddToCart}
     >
       <ShoppingCart size={18} />
