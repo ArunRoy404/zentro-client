@@ -66,7 +66,7 @@ export default function PropertyDetails() {
         <div className="flex flex-col justify-between">
           <PropertyInfo property={property} />
           <PropertyFeatures features={property.propertyFeatures} />
-          <PropertyActions />
+          <PropertyActions propertyId={property._id} />
         </div>
       </div>
 
