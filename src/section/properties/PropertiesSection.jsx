@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import FilterSidebar from "./FilterSidebar";
 import DataFetch from "./DataFetch";
 import PropertyCard from "@/components/properties/PropertyCard";
+import AlertTable from "@/components/Alert/AlertTable";
 
 export default function PropertiesSection() {
   const [search, setSearch] = useState("");
@@ -33,9 +34,7 @@ export default function PropertiesSection() {
         {(filtered) => {
           if (filtered.length === 0)
             return (
-              <p className="col-span-full text-center text-[var(--secondary)]">
-                No properties found.
-              </p>
+              <AlertTable message={'No properties found.'} label={'Properties'} />
             );
 
           return (
