@@ -23,6 +23,7 @@ export default function AddToCartButton({ propertyId }) {
       email: session.user.email,
       propertyId,
     };
+    console.log(payload)
 
     try {
       const res = await axios.post(
